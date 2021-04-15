@@ -1527,92 +1527,17 @@ img:not([src]) {
   text-decoration: none !important;
 }
 :root {
-  --hl-color: #a6accd;
-  --hl-bg: #292d3e;
-  --hltools-bg: #252938;
-  --hltools-color: #a6accd;
-  --hlnumber-bg: #292d3e;
-  --hlnumber-color: rgba(166,172,205,0.5);
-  --hlscrollbar-bg: #1d202c;
-  --hlexpand-bg: linear-gradient(180deg, rgba(41,45,62,0.6), rgba(41,45,62,0.9));
-}
-figure.highlight table::-webkit-scrollbar-thumb {
-  background: var(--hlscrollbar-bg);
-}
-figure.highlight pre .deletion {
-  color: #bf42bf;
-}
-figure.highlight pre .addition {
-  color: #105ede;
-}
-figure.highlight pre .meta {
-  color: #c792ea;
-}
-figure.highlight pre .comment {
-  color: #676e95;
-}
-figure.highlight pre .variable,
-figure.highlight pre .attribute,
-figure.highlight pre .regexp,
-figure.highlight pre .ruby .constant,
-figure.highlight pre .xml .tag .title,
-figure.highlight pre .xml .pi,
-figure.highlight pre .xml .doctype,
-figure.highlight pre .html .doctype,
-figure.highlight pre .css .id,
-figure.highlight pre .tag .name,
-figure.highlight pre .css .class,
-figure.highlight pre .css .pseudo {
-  color: #ff5370;
-}
-figure.highlight pre .tag {
-  color: #89ddff;
-}
-figure.highlight pre .number,
-figure.highlight pre .preprocessor,
-figure.highlight pre .literal,
-figure.highlight pre .params,
-figure.highlight pre .constant,
-figure.highlight pre .command {
-  color: #f78c6c;
-}
-figure.highlight pre .built_in {
-  color: #ffcb6b;
-}
-figure.highlight pre .ruby .class .title,
-figure.highlight pre .css .rules .attribute,
-figure.highlight pre .string,
-figure.highlight pre .value,
-figure.highlight pre .inheritance,
-figure.highlight pre .header,
-figure.highlight pre .ruby .symbol,
-figure.highlight pre .xml .cdata,
-figure.highlight pre .special,
-figure.highlight pre .number,
-figure.highlight pre .formula {
-  color: #c3e88d;
-}
-figure.highlight pre .keyword,
-figure.highlight pre .title,
-figure.highlight pre .css .hexcolor {
-  color: #89ddff;
-}
-figure.highlight pre .function,
-figure.highlight pre .python .decorator,
-figure.highlight pre .python .title,
-figure.highlight pre .ruby .function .title,
-figure.highlight pre .ruby .title .keyword,
-figure.highlight pre .perl .sub,
-figure.highlight pre .javascript .title,
-figure.highlight pre .coffeescript .title {
-  color: #82aaff;
-}
-figure.highlight pre .tag .attr,
-figure.highlight pre .javascript .function {
-  color: #c792ea;
+  --hl-color: #90a4ae;
+  --hl-bg: #f6f8fa;
+  --hltools-bg: #e6ebf1;
+  --hltools-color: #90a4ae;
+  --hlnumber-bg: #f6f8fa;
+  --hlnumber-color: rgba(144,164,174,0.5);
+  --hlscrollbar-bg: #dce4eb;
+  --hlexpand-bg: linear-gradient(180deg, rgba(246,248,250,0.6), rgba(246,248,250,0.9));
 }
 #article-container figure.highlight .line.marked {
-  background-color: rgba(113,124,180,0.314);
+  background-color: rgba(128,203,196,0.251);
 }
 #article-container figure.highlight table {
   display: block;
@@ -1804,6 +1729,33 @@ blockquote footer cite:before {
 }
 #article-container .gist table td {
   border: none;
+}
+#article-container .code-expand-btn {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  background: var(--hlexpand-bg);
+  text-align: center;
+  font-size: var(--global-font-size);
+  cursor: pointer;
+}
+#article-container .code-expand-btn i {
+  padding: 0.3rem 0;
+  color: var(--hlnumber-color);
+  -webkit-animation: code-expand-key 1.2s infinite;
+  -moz-animation: code-expand-key 1.2s infinite;
+  -o-animation: code-expand-key 1.2s infinite;
+  -ms-animation: code-expand-key 1.2s infinite;
+  animation: code-expand-key 1.2s infinite;
+}
+#article-container .code-expand-btn.expand-done {
+  display: none !important;
+}
+#article-container .code-expand-btn:not(.expand-done) ~ table,
+#article-container .code-expand-btn:not(.expand-done) ~ pre {
+  overflow: hidden;
+  height: 200px;
 }
 @-moz-keyframes code-expand-key {
   0% {
@@ -2401,6 +2353,9 @@ blockquote footer cite:before {
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap .fa-angle-right {
   margin: 0 0.2rem;
+}
+#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap time {
+  display: none;
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap a {
   color: #858585;
@@ -3131,12 +3086,10 @@ blockquote footer cite:before {
 }
 #post-comment .comment-head #comment-switch {
   display: inline-block;
-  float: right;
-  margin: 0.1rem auto 0;
-  padding: 0.2rem 0.8rem;
-  width: max-content;
-  border-radius: 8px;
-  background: #f6f8fa;
+  vertical-align: middle;
+}
+#post-comment .comment-head #comment-switch > span {
+  display: none;
 }
 #post-comment .comment-head #comment-switch .first-comment {
   color: #49b1f5;
@@ -5264,9 +5217,6 @@ blockquote.pullquote.right {
   background: rgba(18,18,18,0.8);
   -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,0);
   box-shadow: 0 5px 6px -5px rgba(133,133,133,0);
-}
-[data-theme='dark'] #post-comment #comment-switch {
-  background: #2c2c2c !important;
 }
 [data-theme='dark'] #post-comment #comment-switch .switch-btn {
   filter: brightness(0.8);
