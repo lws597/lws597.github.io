@@ -6,7 +6,7 @@
   <link href="https://lwscode.cn/atom.xml" rel="self"/>
   
   <link href="https://lwscode.cn/"/>
-  <updated>2021-04-16T10:27:00.025Z</updated>
+  <updated>2021-04-16T10:27:00.026Z</updated>
   <id>https://lwscode.cn/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://lwscode.cn/22/"/>
-    <id>https://lwscode.cn/22/</id>
-    <published>2021-04-14T13:07:18.435Z</published>
-    <updated>2021-04-16T10:27:00.025Z</updated>
-    
-    <content type="html"><![CDATA[<h1>类和对象3</h1><h2 id="继承">继承</h2><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p><p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p><h3 id="子类的访问权限">子类的访问权限</h3><table><thead><tr><th style="text-align:left"></th><th style="text-align:left">public</th><th style="text-align:left">protected</th><th style="text-align:left">private</th></tr></thead><tbody><tr><td style="text-align:left">public</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td></tr><tr><td style="text-align:left">protected</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">no</td></tr><tr><td style="text-align:left">private</td><td style="text-align:left">no</td><td style="text-align:left">no</td><td style="text-align:left">no</td></tr></tbody></table><h3 id="对外的访问权限">对外的访问权限</h3><table><thead><tr><th></th><th>public</th><th>protected</th><th>private</th></tr></thead><tbody><tr><td>public</td><td>public</td><td>protected</td><td>private</td></tr><tr><td>protected</td><td>protected</td><td>protected</td><td>private</td></tr><tr><td>private</td><td>no</td><td>no</td><td>no</td></tr></tbody></table><h3 id="菱形继承（A-D-B-D-C-A，B-）">菱形继承（A-&gt;D, B-&gt;D, C-&gt;(A，B)）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">class D&#123;......&#125;;<br>class B: public D&#123;......&#125;;<br>class A: public D&#123;......&#125;;<br>class C: public B, public A&#123;.....&#125;;<br></code></pre></td></tr></table></figure><p>这个继承会使D创建两个对象,要解决上面问题就要用虚拟继承格式</p><p>格式：<strong>class 类名: virtual 继承方式 父类名</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">class D&#123;......&#125;;<br>class B: virtual public D&#123;......&#125;;<br>class A: virtual public D&#123;......&#125;;<br>class C: public B, public A&#123;.....&#125;;<br></code></pre></td></tr></table></figure><p>虚继承–（在创建对象的时候会创建一个虚表）在创建父类对象的时候</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">A:virtual public D<br>B:virtual public D<br></code></pre></td></tr></table></figure><h3 id="访问控制和继承">访问控制和继承</h3><p>派生类可以访问基类中所有的非私有成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。<br>我们可以根据访问权限总结出不同的访问类型，如下所示：</p><table><thead><tr><th style="text-align:left">访问</th><th style="text-align:left">public</th><th style="text-align:left">protected</th><th style="text-align:left">private</th></tr></thead><tbody><tr><td style="text-align:left">同一个类</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td></tr><tr><td style="text-align:left">派生类</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">no</td></tr><tr><td style="text-align:left">外部的类</td><td style="text-align:left">yes</td><td style="text-align:left">no</td><td style="text-align:left">no</td></tr></tbody></table><p>一个派生类继承了所有的基类方法，但下列情况除外：</p><ul><li>基类的构造函数、析构函数和拷贝构造函数</li><li>基类的重载运算符</li><li>基类的友元函数</li></ul><p>当使用不同类型的继承时，遵循以下几个规则：</p><ul><li><strong>公有继承（public）：<strong>当一个类派生自</strong>公有</strong>基类时，基类的<strong>公有</strong>成员也是派生类的<strong>公有</strong>成员，基类的<strong>保护</strong>成员也是派生类的<strong>保护</strong>成员，基类的<strong>私有</strong>成员不能直接被派生类访问，但是可以通过调用基类的<strong>公有</strong>和<strong>保护</strong>成员来访问。</li><li><strong>保护继承（protected）：</strong> 当一个类派生自<strong>保护</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>保护</strong>成员。</li><li><strong>私有继承（private）：<strong>当一个类派生自</strong>私有</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>私有</strong>成员。</li></ul><h2 id="运算符重载">运算符重载</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Point</span>() &#123;&#125;<br>    <span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y) : <span class="hljs-built_in">x</span>(x), <span class="hljs-built_in">y</span>(y) &#123;&#125;<br>    <span class="hljs-built_in">Point</span>(<span class="hljs-keyword">const</span> Point &amp;obj) : <span class="hljs-built_in">x</span>(obj.x), <span class="hljs-built_in">y</span>(obj.y) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;copy constructor&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;x + <span class="hljs-keyword">this</span>-&gt;y + num;<br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>[](string str) &#123;<br>        <span class="hljs-keyword">if</span> (str == <span class="hljs-string">&quot;x&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;x;<br>        <span class="hljs-keyword">if</span> (str == <span class="hljs-string">&quot;y&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;y;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    Point <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> Point &amp;a) &#123;<br>        Point ret;<br>        ret.x = <span class="hljs-keyword">this</span>-&gt;x - a.x;<br>        ret.y = <span class="hljs-keyword">this</span>-&gt;y - a.y;<br>        <span class="hljs-keyword">return</span> ret;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;, <span class="hljs-keyword">const</span> Point &amp;);<br>    <span class="hljs-keyword">friend</span> Point <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Point &amp;, <span class="hljs-keyword">const</span> Point &amp;);<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> x, y;<br>&#125;;<br><br>Point <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Point &amp;a, <span class="hljs-keyword">const</span> Point &amp;b) &#123;<br>    Point ret;<br>    ret.x = a.x + b.x;<br>    ret.y = a.y + b.y;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br>ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;output, <span class="hljs-keyword">const</span> Point &amp;a) &#123;<br>    output &lt;&lt; <span class="hljs-string">&quot;&lt;class Point&gt;(&quot;</span> &lt;&lt; a.x &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; a.y &lt;&lt; <span class="hljs-string">&quot;)&quot;</span>;<br>    <span class="hljs-keyword">return</span> output;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    Point a(2, 4), b(5, 3);<br>    Point c = a + b;<br>    Point d = a + b + c;<br>    Point e = d - b;<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    cout &lt;&lt; b &lt;&lt; endl;<br>    cout &lt;&lt; c &lt;&lt; endl;<br>    cout &lt;&lt; d &lt;&lt; endl;<br>    cout &lt;&lt; e &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">intArray</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> n;<br>    <span class="hljs-keyword">int</span> *p;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">intArray</span>(<span class="hljs-keyword">int</span> n) : <span class="hljs-built_in">n</span>(n) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>    &#125;<br>    <span class="hljs-built_in">intArray</span>(<span class="hljs-keyword">const</span> intArray &amp;obj) : <span class="hljs-built_in">n</span>(obj.n) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i] = obj.p[i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> n;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (p[i] == num) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> op)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (op) std::<span class="hljs-built_in">sort</span>(p, p + n);<br>        <span class="hljs-keyword">else</span> std::<span class="hljs-built_in">sort</span>(p, p + n, [](<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) &#123;<span class="hljs-keyword">return</span> a &gt; b;&#125;);<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverse</span><span class="hljs-params">()</span> </span>&#123;<br>        std::<span class="hljs-built_in">reverse</span>(p, p + n);<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-keyword">int</span> &amp;<span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">int</span> ind) &#123;<br>        <span class="hljs-keyword">if</span> (ind &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;p[n + ind];<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;p[ind];<br>    &#125;<br>    <span class="hljs-keyword">void</span> <span class="hljs-keyword">operator</span>+=(<span class="hljs-keyword">int</span> num) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i] += num;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    intArray &amp;<span class="hljs-keyword">operator</span>++() &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i]++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    intArray <span class="hljs-keyword">operator</span>++(<span class="hljs-keyword">int</span> x) &#123;<br>        intArray ret = *<span class="hljs-keyword">this</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i]++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ret;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;, <span class="hljs-keyword">const</span> intArray &amp;);<br>    ~<span class="hljs-built_in">intArray</span>() &#123;<br>        <span class="hljs-keyword">delete</span>[] <span class="hljs-keyword">this</span>-&gt;p;<br>    &#125;<br>&#125;;<br><br>ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;output, <span class="hljs-keyword">const</span> intArray &amp;a) &#123;<br>    output &lt;&lt; <span class="hljs-string">&quot;&lt;class intArray&gt;:&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; a.n; i++) &#123;<br>        output &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; a.p[i];<br>    &#125;<br>    <span class="hljs-keyword">return</span> output;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">intArray <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>        a[i] = i;<br>    &#125;<br>    cout &lt;&lt; a.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    cout &lt;&lt; a.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>) &lt;&lt; endl;<br>    cout &lt;&lt; a[<span class="hljs-number">4</span>] &lt;&lt; endl;<br>    cout &lt;&lt; a[<span class="hljs-number">-2</span>] &lt;&lt; endl;<br>    a += <span class="hljs-number">5</span>;<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    a.<span class="hljs-built_in">sort</span>(<span class="hljs-number">1</span>);<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    a.<span class="hljs-built_in">sort</span>(<span class="hljs-number">0</span>);<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    a.<span class="hljs-built_in">reverse</span>();<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    cout &lt;&lt; (a++) &lt;&lt; endl;<br>    cout &lt;&lt; (++a) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;类和对象3&lt;/h1&gt;
-&lt;h2 id=&quot;继承&quot;&gt;继承&lt;/h2&gt;
-&lt;p&gt;面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。&lt;/p&gt;
-&lt;p&gt;当创建一个类时，您</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title></title>
@@ -65,21 +42,20 @@
   
   <entry>
     <title></title>
-    <link href="https://lwscode.cn/17/"/>
-    <id>https://lwscode.cn/17/</id>
-    <published>2021-04-14T13:07:18.434Z</published>
-    <updated>2021-04-16T10:27:00.023Z</updated>
+    <link href="https://lwscode.cn/22/"/>
+    <id>https://lwscode.cn/22/</id>
+    <published>2021-04-14T13:07:18.435Z</published>
+    <updated>2021-04-16T10:27:00.025Z</updated>
     
-    <content type="html"><![CDATA[<p>printf输出颜色和ANSI控制码(高亮,下划线,闪烁,光标位置,清屏等)</p><p>颜色：</p><p>#define NONE “/033[m”</p><p>#define RED “/033[0;32;31m”</p><p>#define LIGHT_RED “/033[1;31m”</p><p>#define GREEN “/033[0;32;32m”</p><p>#define LIGHT_GREEN “/033[1;32m”</p><p>#define BLUE “/033[0;32;34m”</p><p>#define LIGHT_BLUE “/033[1;34m”</p><p>#define DARY_GRAY “/033[1;30m”</p><p>#define CYAN “/033[0;36m”</p><p>#define LIGHT_CYAN “/033[1;36m”</p><p>#define PURPLE “/033[0;35m”</p><p>#define LIGHT_PURPLE “/033[1;35m”</p><p>#define BROWN “/033[0;33m”</p><p>#define YELLOW “/033[1;33m”</p><p>#define LIGHT_GRAY “/033[0;37m”</p><p>#define WHITE “/033[1;37m”</p><p>比如：</p><p>printf(“/033[31m ####-----&gt;&gt; /033[32m” “hello/n” “/033[m”)</p><p>int main()</p><p>{</p><p>printf( CYAN “current function is %s &quot; GREEN &quot; file line is %d/n” NONE,</p><p><strong>FUNCTION</strong>, <strong>LINE</strong> );</p><p>fprintf(stderr, RED “current function is %s &quot; BLUE &quot; file line is %d/n” NONE,</p><p><strong>FUNCTION</strong>, <strong>LINE</strong> );</p><p>return 0;</p><p>}</p><p>颜色分为背景色和字体色，30~39用来设置字体色，40~49设置背景：</p><p>背景色 字体色</p><p>40: 黑 30: 黑</p><p>41: 红 31: 红</p><p>42: 绿 32: 绿</p><p>43: 黄 33: 黄</p><p>44: 蓝 34: 蓝</p><p>45: 紫 35: 紫</p><p>46: 深绿 36: 深绿</p><p>47: 白色 37: 白色</p><p>记得在打印完之后，把颜色恢复成NONE，不然再后面的打印都会跟着变色。</p><p>另外，还可以加一些ANSI控制码。加颜色只是以下控制码中的一种：</p><p>/033[0m 关闭所有属性</p><p>/033[1m 设置高亮度</p><p>/033[4m 下划线</p><p>/033[5m 闪烁</p><p>/033[7m 反显</p><p>/033[8m 消隐</p><p>/033[30m – /033[37m 设置前景色</p><p>/033[40m – /033[47m 设置背景色</p><p>/033[nA 光标上移n行</p><p>/033[nB 光标下移n行</p><p>/033[nC 光标右移n行</p><p>/033[nD 光标左移n行</p><p>/033[y;xH设置光标位置</p><p>/033[2J 清屏</p><p>/033[K 清除从光标到行尾的内容</p><p>/033[s 保存光标位置</p><p>/033[u 恢复光标位置</p><p>/033[?25l 隐藏光标</p><p>/033[?25h 显示光标</p>]]></content>
+    <content type="html"><![CDATA[<h1>类和对象3</h1><h2 id="继承">继承</h2><p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。</p><p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p><h3 id="子类的访问权限">子类的访问权限</h3><table><thead><tr><th style="text-align:left"></th><th style="text-align:left">public</th><th style="text-align:left">protected</th><th style="text-align:left">private</th></tr></thead><tbody><tr><td style="text-align:left">public</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td></tr><tr><td style="text-align:left">protected</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">no</td></tr><tr><td style="text-align:left">private</td><td style="text-align:left">no</td><td style="text-align:left">no</td><td style="text-align:left">no</td></tr></tbody></table><h3 id="对外的访问权限">对外的访问权限</h3><table><thead><tr><th></th><th>public</th><th>protected</th><th>private</th></tr></thead><tbody><tr><td>public</td><td>public</td><td>protected</td><td>private</td></tr><tr><td>protected</td><td>protected</td><td>protected</td><td>private</td></tr><tr><td>private</td><td>no</td><td>no</td><td>no</td></tr></tbody></table><h3 id="菱形继承（A-D-B-D-C-A，B-）">菱形继承（A-&gt;D, B-&gt;D, C-&gt;(A，B)）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">class D&#123;......&#125;;<br>class B: public D&#123;......&#125;;<br>class A: public D&#123;......&#125;;<br>class C: public B, public A&#123;.....&#125;;<br></code></pre></td></tr></table></figure><p>这个继承会使D创建两个对象,要解决上面问题就要用虚拟继承格式</p><p>格式：<strong>class 类名: virtual 继承方式 父类名</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">class D&#123;......&#125;;<br>class B: virtual public D&#123;......&#125;;<br>class A: virtual public D&#123;......&#125;;<br>class C: public B, public A&#123;.....&#125;;<br></code></pre></td></tr></table></figure><p>虚继承–（在创建对象的时候会创建一个虚表）在创建父类对象的时候</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">A:virtual public D<br>B:virtual public D<br></code></pre></td></tr></table></figure><h3 id="访问控制和继承">访问控制和继承</h3><p>派生类可以访问基类中所有的非私有成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。<br>我们可以根据访问权限总结出不同的访问类型，如下所示：</p><table><thead><tr><th style="text-align:left">访问</th><th style="text-align:left">public</th><th style="text-align:left">protected</th><th style="text-align:left">private</th></tr></thead><tbody><tr><td style="text-align:left">同一个类</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td></tr><tr><td style="text-align:left">派生类</td><td style="text-align:left">yes</td><td style="text-align:left">yes</td><td style="text-align:left">no</td></tr><tr><td style="text-align:left">外部的类</td><td style="text-align:left">yes</td><td style="text-align:left">no</td><td style="text-align:left">no</td></tr></tbody></table><p>一个派生类继承了所有的基类方法，但下列情况除外：</p><ul><li>基类的构造函数、析构函数和拷贝构造函数</li><li>基类的重载运算符</li><li>基类的友元函数</li></ul><p>当使用不同类型的继承时，遵循以下几个规则：</p><ul><li><strong>公有继承（public）：<strong>当一个类派生自</strong>公有</strong>基类时，基类的<strong>公有</strong>成员也是派生类的<strong>公有</strong>成员，基类的<strong>保护</strong>成员也是派生类的<strong>保护</strong>成员，基类的<strong>私有</strong>成员不能直接被派生类访问，但是可以通过调用基类的<strong>公有</strong>和<strong>保护</strong>成员来访问。</li><li><strong>保护继承（protected）：</strong> 当一个类派生自<strong>保护</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>保护</strong>成员。</li><li><strong>私有继承（private）：<strong>当一个类派生自</strong>私有</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>私有</strong>成员。</li></ul><h2 id="运算符重载">运算符重载</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Point</span>() &#123;&#125;<br>    <span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y) : <span class="hljs-built_in">x</span>(x), <span class="hljs-built_in">y</span>(y) &#123;&#125;<br>    <span class="hljs-built_in">Point</span>(<span class="hljs-keyword">const</span> Point &amp;obj) : <span class="hljs-built_in">x</span>(obj.x), <span class="hljs-built_in">y</span>(obj.y) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;copy constructor&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;x + <span class="hljs-keyword">this</span>-&gt;y + num;<br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>[](string str) &#123;<br>        <span class="hljs-keyword">if</span> (str == <span class="hljs-string">&quot;x&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;x;<br>        <span class="hljs-keyword">if</span> (str == <span class="hljs-string">&quot;y&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;y;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    Point <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> Point &amp;a) &#123;<br>        Point ret;<br>        ret.x = <span class="hljs-keyword">this</span>-&gt;x - a.x;<br>        ret.y = <span class="hljs-keyword">this</span>-&gt;y - a.y;<br>        <span class="hljs-keyword">return</span> ret;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;, <span class="hljs-keyword">const</span> Point &amp;);<br>    <span class="hljs-keyword">friend</span> Point <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Point &amp;, <span class="hljs-keyword">const</span> Point &amp;);<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> x, y;<br>&#125;;<br><br>Point <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Point &amp;a, <span class="hljs-keyword">const</span> Point &amp;b) &#123;<br>    Point ret;<br>    ret.x = a.x + b.x;<br>    ret.y = a.y + b.y;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br>ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;output, <span class="hljs-keyword">const</span> Point &amp;a) &#123;<br>    output &lt;&lt; <span class="hljs-string">&quot;&lt;class Point&gt;(&quot;</span> &lt;&lt; a.x &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; a.y &lt;&lt; <span class="hljs-string">&quot;)&quot;</span>;<br>    <span class="hljs-keyword">return</span> output;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    Point a(2, 4), b(5, 3);<br>    Point c = a + b;<br>    Point d = a + b + c;<br>    Point e = d - b;<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    cout &lt;&lt; b &lt;&lt; endl;<br>    cout &lt;&lt; c &lt;&lt; endl;<br>    cout &lt;&lt; d &lt;&lt; endl;<br>    cout &lt;&lt; e &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">intArray</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> n;<br>    <span class="hljs-keyword">int</span> *p;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">intArray</span>(<span class="hljs-keyword">int</span> n) : <span class="hljs-built_in">n</span>(n) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>    &#125;<br>    <span class="hljs-built_in">intArray</span>(<span class="hljs-keyword">const</span> intArray &amp;obj) : <span class="hljs-built_in">n</span>(obj.n) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i] = obj.p[i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> n;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (p[i] == num) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> op)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (op) std::<span class="hljs-built_in">sort</span>(p, p + n);<br>        <span class="hljs-keyword">else</span> std::<span class="hljs-built_in">sort</span>(p, p + n, [](<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) &#123;<span class="hljs-keyword">return</span> a &gt; b;&#125;);<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reverse</span><span class="hljs-params">()</span> </span>&#123;<br>        std::<span class="hljs-built_in">reverse</span>(p, p + n);<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-keyword">int</span> &amp;<span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">int</span> ind) &#123;<br>        <span class="hljs-keyword">if</span> (ind &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;p[n + ind];<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;p[ind];<br>    &#125;<br>    <span class="hljs-keyword">void</span> <span class="hljs-keyword">operator</span>+=(<span class="hljs-keyword">int</span> num) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i] += num;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    intArray &amp;<span class="hljs-keyword">operator</span>++() &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i]++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    intArray <span class="hljs-keyword">operator</span>++(<span class="hljs-keyword">int</span> x) &#123;<br>        intArray ret = *<span class="hljs-keyword">this</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">this</span>-&gt;p[i]++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ret;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;, <span class="hljs-keyword">const</span> intArray &amp;);<br>    ~<span class="hljs-built_in">intArray</span>() &#123;<br>        <span class="hljs-keyword">delete</span>[] <span class="hljs-keyword">this</span>-&gt;p;<br>    &#125;<br>&#125;;<br><br>ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;output, <span class="hljs-keyword">const</span> intArray &amp;a) &#123;<br>    output &lt;&lt; <span class="hljs-string">&quot;&lt;class intArray&gt;:&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; a.n; i++) &#123;<br>        output &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; a.p[i];<br>    &#125;<br>    <span class="hljs-keyword">return</span> output;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">intArray <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>        a[i] = i;<br>    &#125;<br>    cout &lt;&lt; a.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    cout &lt;&lt; a.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>) &lt;&lt; endl;<br>    cout &lt;&lt; a[<span class="hljs-number">4</span>] &lt;&lt; endl;<br>    cout &lt;&lt; a[<span class="hljs-number">-2</span>] &lt;&lt; endl;<br>    a += <span class="hljs-number">5</span>;<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    a.<span class="hljs-built_in">sort</span>(<span class="hljs-number">1</span>);<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    a.<span class="hljs-built_in">sort</span>(<span class="hljs-number">0</span>);<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    a.<span class="hljs-built_in">reverse</span>();<br>    cout &lt;&lt; a &lt;&lt; endl;<br>    cout &lt;&lt; (a++) &lt;&lt; endl;<br>    cout &lt;&lt; (++a) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;printf输出颜色和ANSI控制码(高亮,下划线,闪烁,光标位置,清屏等)&lt;/p&gt;
-&lt;p&gt;颜色：&lt;/p&gt;
-&lt;p&gt;#define NONE “/033[m”&lt;/p&gt;
-&lt;p&gt;#define RED “/033[0;32;31m”&lt;/p&gt;
-&lt;p&gt;#define LIGHT_RE</summary>
+    <summary type="html">&lt;h1&gt;类和对象3&lt;/h1&gt;
+&lt;h2 id=&quot;继承&quot;&gt;继承&lt;/h2&gt;
+&lt;p&gt;面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行效率的效果。&lt;/p&gt;
+&lt;p&gt;当创建一个类时，您</summary>
       
     
     
@@ -166,21 +142,21 @@
   
   <entry>
     <title></title>
-    <link href="https://lwscode.cn/11/"/>
-    <id>https://lwscode.cn/11/</id>
-    <published>2021-04-14T13:07:18.433Z</published>
-    <updated>2021-04-16T10:27:00.022Z</updated>
+    <link href="https://lwscode.cn/17/"/>
+    <id>https://lwscode.cn/17/</id>
+    <published>2021-04-14T13:07:18.434Z</published>
+    <updated>2021-04-16T10:27:00.023Z</updated>
     
-    <content type="html"><![CDATA[<h1>avl_tree</h1><h2 id="节点数">节点数</h2><p>在高度为h的avl树中，最少节点数low(h)</p><p>low(h) = low(h - 1) + low(h - 2) + 1low(0) = 1 low(1) = 2</p><p>最大节点数max(h)</p><p>max(h) = 2^h - 1</p><h2 id="平衡">平衡</h2><p>LL型 右旋</p><p>RR型 左旋</p><p>LR型 左旋–&gt;(LL型)–&gt;右旋</p><p>RL型 右旋–&gt;(RR型)–&gt;左旋</p>]]></content>
+    <content type="html"><![CDATA[<p>printf输出颜色和ANSI控制码(高亮,下划线,闪烁,光标位置,清屏等)</p><p>颜色：</p><p>#define NONE “/033[m”</p><p>#define RED “/033[0;32;31m”</p><p>#define LIGHT_RED “/033[1;31m”</p><p>#define GREEN “/033[0;32;32m”</p><p>#define LIGHT_GREEN “/033[1;32m”</p><p>#define BLUE “/033[0;32;34m”</p><p>#define LIGHT_BLUE “/033[1;34m”</p><p>#define DARY_GRAY “/033[1;30m”</p><p>#define CYAN “/033[0;36m”</p><p>#define LIGHT_CYAN “/033[1;36m”</p><p>#define PURPLE “/033[0;35m”</p><p>#define LIGHT_PURPLE “/033[1;35m”</p><p>#define BROWN “/033[0;33m”</p><p>#define YELLOW “/033[1;33m”</p><p>#define LIGHT_GRAY “/033[0;37m”</p><p>#define WHITE “/033[1;37m”</p><p>比如：</p><p>printf(“/033[31m ####-----&gt;&gt; /033[32m” “hello/n” “/033[m”)</p><p>int main()</p><p>{</p><p>printf( CYAN “current function is %s &quot; GREEN &quot; file line is %d/n” NONE,</p><p><strong>FUNCTION</strong>, <strong>LINE</strong> );</p><p>fprintf(stderr, RED “current function is %s &quot; BLUE &quot; file line is %d/n” NONE,</p><p><strong>FUNCTION</strong>, <strong>LINE</strong> );</p><p>return 0;</p><p>}</p><p>颜色分为背景色和字体色，30~39用来设置字体色，40~49设置背景：</p><p>背景色 字体色</p><p>40: 黑 30: 黑</p><p>41: 红 31: 红</p><p>42: 绿 32: 绿</p><p>43: 黄 33: 黄</p><p>44: 蓝 34: 蓝</p><p>45: 紫 35: 紫</p><p>46: 深绿 36: 深绿</p><p>47: 白色 37: 白色</p><p>记得在打印完之后，把颜色恢复成NONE，不然再后面的打印都会跟着变色。</p><p>另外，还可以加一些ANSI控制码。加颜色只是以下控制码中的一种：</p><p>/033[0m 关闭所有属性</p><p>/033[1m 设置高亮度</p><p>/033[4m 下划线</p><p>/033[5m 闪烁</p><p>/033[7m 反显</p><p>/033[8m 消隐</p><p>/033[30m – /033[37m 设置前景色</p><p>/033[40m – /033[47m 设置背景色</p><p>/033[nA 光标上移n行</p><p>/033[nB 光标下移n行</p><p>/033[nC 光标右移n行</p><p>/033[nD 光标左移n行</p><p>/033[y;xH设置光标位置</p><p>/033[2J 清屏</p><p>/033[K 清除从光标到行尾的内容</p><p>/033[s 保存光标位置</p><p>/033[u 恢复光标位置</p><p>/033[?25l 隐藏光标</p><p>/033[?25h 显示光标</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1&gt;avl_tree&lt;/h1&gt;
-&lt;h2 id=&quot;节点数&quot;&gt;节点数&lt;/h2&gt;
-&lt;p&gt;在高度为h的avl树中，最少节点数low(h)&lt;/p&gt;
-&lt;p&gt;low(h) = low(h - 1) + low(h - 2) + 1	low(0) = 1 low(1) = 2&lt;/p&gt;
-&lt;p&gt;</summary>
+    <summary type="html">&lt;p&gt;printf输出颜色和ANSI控制码(高亮,下划线,闪烁,光标位置,清屏等)&lt;/p&gt;
+&lt;p&gt;颜色：&lt;/p&gt;
+&lt;p&gt;#define NONE “/033[m”&lt;/p&gt;
+&lt;p&gt;#define RED “/033[0;32;31m”&lt;/p&gt;
+&lt;p&gt;#define LIGHT_RE</summary>
       
     
     
@@ -207,6 +183,30 @@
 &lt;li&gt;头文件：queue&lt;/li&gt;
 &lt;li&gt;命名空间：std&lt;/li&gt;
 &lt;li&gt;声明：queue&amp;lt;data_type&amp;gt; </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lwscode.cn/11/"/>
+    <id>https://lwscode.cn/11/</id>
+    <published>2021-04-14T13:07:18.433Z</published>
+    <updated>2021-04-16T10:27:00.022Z</updated>
+    
+    <content type="html"><![CDATA[<h1>avl_tree</h1><h2 id="节点数">节点数</h2><p>在高度为h的avl树中，最少节点数low(h)</p><p>low(h) = low(h - 1) + low(h - 2) + 1low(0) = 1 low(1) = 2</p><p>最大节点数max(h)</p><p>max(h) = 2^h - 1</p><h2 id="平衡">平衡</h2><p>LL型 右旋</p><p>RR型 左旋</p><p>LR型 左旋–&gt;(LL型)–&gt;右旋</p><p>RL型 右旋–&gt;(RR型)–&gt;左旋</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;avl_tree&lt;/h1&gt;
+&lt;h2 id=&quot;节点数&quot;&gt;节点数&lt;/h2&gt;
+&lt;p&gt;在高度为h的avl树中，最少节点数low(h)&lt;/p&gt;
+&lt;p&gt;low(h) = low(h - 1) + low(h - 2) + 1	low(0) = 1 low(1) = 2&lt;/p&gt;
+&lt;p&gt;</summary>
       
     
     
@@ -266,6 +266,29 @@
   
   <entry>
     <title></title>
+    <link href="https://lwscode.cn/8/"/>
+    <id>https://lwscode.cn/8/</id>
+    <published>2021-04-14T13:07:18.432Z</published>
+    <updated>2021-04-16T10:27:00.021Z</updated>
+    
+    <content type="html"><![CDATA[<h1>DAY04</h1><h2 id="使用github管理代码">使用github管理代码</h2><h3 id="创建一个空目录">创建一个空目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">mkdir hzoj<br>cd hzoj<br>pwd<br></code></pre></td></tr></table></figure><h3 id="把目录变成git仓库">把目录变成git仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git init<br></code></pre></td></tr></table></figure><h3 id="把文件添加到仓库">把文件添加到仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git add *<br></code></pre></td></tr></table></figure><h3 id="把文件提交到仓库">把文件提交到仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git commit *<br></code></pre></td></tr></table></figure><h3 id="查看结果">查看结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git status<br></code></pre></td></tr></table></figure><h3 id="把本地库的所有内容推送到远程库上">把本地库的所有内容推送到远程库上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">git remote add origin git@github.com:lws597&#x2F;HZOJ.git<br>git push -u origin master<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;DAY04&lt;/h1&gt;
+&lt;h2 id=&quot;使用github管理代码&quot;&gt;使用github管理代码&lt;/h2&gt;
+&lt;h3 id=&quot;创建一个空目录&quot;&gt;创建一个空目录&lt;/h3&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;g</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
     <link href="https://lwscode.cn/4/"/>
     <id>https://lwscode.cn/4/</id>
     <published>2021-04-14T13:07:18.432Z</published>
@@ -286,29 +309,6 @@
 &lt;th&gt;命令&lt;/th&gt;
 &lt;th&gt;功能&lt;/th&gt;
 &lt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://lwscode.cn/8/"/>
-    <id>https://lwscode.cn/8/</id>
-    <published>2021-04-14T13:07:18.432Z</published>
-    <updated>2021-04-16T10:27:00.021Z</updated>
-    
-    <content type="html"><![CDATA[<h1>DAY04</h1><h2 id="使用github管理代码">使用github管理代码</h2><h3 id="创建一个空目录">创建一个空目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">mkdir hzoj<br>cd hzoj<br>pwd<br></code></pre></td></tr></table></figure><h3 id="把目录变成git仓库">把目录变成git仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git init<br></code></pre></td></tr></table></figure><h3 id="把文件添加到仓库">把文件添加到仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git add *<br></code></pre></td></tr></table></figure><h3 id="把文件提交到仓库">把文件提交到仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git commit *<br></code></pre></td></tr></table></figure><h3 id="查看结果">查看结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git status<br></code></pre></td></tr></table></figure><h3 id="把本地库的所有内容推送到远程库上">把本地库的所有内容推送到远程库上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">git remote add origin git@github.com:lws597&#x2F;HZOJ.git<br>git push -u origin master<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;DAY04&lt;/h1&gt;
-&lt;h2 id=&quot;使用github管理代码&quot;&gt;使用github管理代码&lt;/h2&gt;
-&lt;h3 id=&quot;创建一个空目录&quot;&gt;创建一个空目录&lt;/h3&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;g</summary>
       
     
     
@@ -344,27 +344,6 @@
   
   <entry>
     <title></title>
-    <link href="https://lwscode.cn/7/"/>
-    <id>https://lwscode.cn/7/</id>
-    <published>2021-04-14T13:07:18.432Z</published>
-    <updated>2021-04-16T10:27:00.021Z</updated>
-    
-    <content type="html"><![CDATA[<h1>NOTE</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;NOTE&lt;/h1&gt;
-</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
     <link href="https://lwscode.cn/6/"/>
     <id>https://lwscode.cn/6/</id>
     <published>2021-04-14T13:07:18.432Z</published>
@@ -382,6 +361,27 @@
 &lt;li&gt;根节点是黑色的&lt;/li&gt;
 &lt;li&gt;叶节点(NIL)是黑色的&lt;/li&gt;
 &lt;li&gt;如果一个节点是红色的，则它的两个子节点都是黑色的&lt;/li&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lwscode.cn/7/"/>
+    <id>https://lwscode.cn/7/</id>
+    <published>2021-04-14T13:07:18.432Z</published>
+    <updated>2021-04-16T10:27:00.021Z</updated>
+    
+    <content type="html"><![CDATA[<h1>NOTE</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;NOTE&lt;/h1&gt;
+</summary>
       
     
     
@@ -439,27 +439,6 @@
   
   <entry>
     <title></title>
-    <link href="https://lwscode.cn/0/"/>
-    <id>https://lwscode.cn/0/</id>
-    <published>2021-04-14T13:07:18.430Z</published>
-    <updated>2021-04-16T15:18:05.496Z</updated>
-    
-    <content type="html"><![CDATA[<p>替换</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">ls -al &#96;which ls&#96; 或<br>ls -al $(which ls)<br></code></pre></td></tr></table></figure><p>高亮显示 grep</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">locate ls.c | grep ls.c<br></code></pre></td></tr></table></figure><p>查找 find</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">find ~ -name &quot;*.c&quot;<br></code></pre></td></tr></table></figure><p>.c .cpp .sh .h 求总行数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo find ~ \( -name &quot;*.[ch]&quot; -o -name &quot;*.sh&quot; -o -name &quot;*.cpp&quot; \) -exec wc -l &#123;&#125; \; | xargs wc -l<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;替换&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
     <link href="https://lwscode.cn/2/"/>
     <id>https://lwscode.cn/2/</id>
     <published>2021-04-14T13:07:18.430Z</published>
@@ -476,6 +455,27 @@
 &lt;p&gt;alias a=‘echo hahaha’ 别名&lt;/p&gt;
 &lt;p&gt;chmod 更改文件权限 chown&lt;/p&gt;
 &lt;p&gt;su - </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lwscode.cn/0/"/>
+    <id>https://lwscode.cn/0/</id>
+    <published>2021-04-14T13:07:18.430Z</published>
+    <updated>2021-04-16T15:40:47.254Z</updated>
+    
+    <content type="html"><![CDATA[<p>替换</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">ls -al &#96;which ls&#96; 或<br>ls -al $(which ls)<br></code></pre></td></tr></table></figure><p>高亮显示 grep</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">locate ls.c | grep ls.c<br></code></pre></td></tr></table></figure><p>查找 find</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">find ~ -name &quot;*.c&quot;<br></code></pre></td></tr></table></figure><p>.c .cpp .sh .h 求总行数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo find ~ \( -name &quot;*.[ch]&quot; -o -name &quot;*.sh&quot; -o -name &quot;*.cpp&quot; \) -exec wc -l &#123;&#125; \; | xargs wc -l<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;替换&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;</summary>
       
     
     
