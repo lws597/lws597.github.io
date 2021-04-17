@@ -1,163 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>lwscode | lwscode</title><meta name="keywords" content="blog"><meta name="author" content="lws"><meta name="copyright" content="lws"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="后端开发面试题 后端开发面试知识点大纲： 语言类（C++）： 关键字作用解释： volatile作用 Volatile关键词的第一个特性：易变性。所谓的易变性，在汇编层面反映出来，就是两条语句，下一条语句不会直接使用上一条语句对应的volatile变量的寄存器内容，而是重新从内存中读取。  Volatile关键词的第二个特性：“不可优化”特性。volatile告诉编译器，不要对我这个变量进行各种激">
-<meta property="og:type" content="article">
-<meta property="og:title" content="lwscode">
-<meta property="og:url" content="https://lwscode.cn/12/">
-<meta property="og:site_name" content="lwscode">
-<meta property="og:description" content="后端开发面试题 后端开发面试知识点大纲： 语言类（C++）： 关键字作用解释： volatile作用 Volatile关键词的第一个特性：易变性。所谓的易变性，在汇编层面反映出来，就是两条语句，下一条语句不会直接使用上一条语句对应的volatile变量的寄存器内容，而是重新从内存中读取。  Volatile关键词的第二个特性：“不可优化”特性。volatile告诉编译器，不要对我这个变量进行各种激">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
-<meta property="article:published_time" content="2021-04-14T13:07:14.941Z">
-<meta property="article:modified_time" content="2021-04-16T10:27:00.022Z">
-<meta property="article:author" content="lws">
-<meta property="article:tag" content="blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lwscode.cn/12/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google_site_verification" content="UenUs27jwiTQ3X7gEA7Hr8yF8d6MhE-1d0UhCmsXtII"/><link rel="manifest" href="/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0f2325a11f6dbcc60f895e93da30c970";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: {"appId":"1PX0RW7O2R","apiKey":"b4cb89572c9078c767d8e8c8c8f03b53","indexName":"lwscode","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: true,
-    post: false
-  },
-  runtime: '天',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2021-04-16 18:27:00'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const fontSizeVal = saveToLocal.get('global-font-size')
-    if (fontSizeVal !== undefined) {
-      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
-    }
-    })(window)</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/self/kimbie.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lwscode" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lwscode</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-14T13:07:14.941Z" title="发表于 2021-04-14 21:07:14">2021-04-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-16T10:27:00.022Z" title="更新于 2021-04-16 18:27:00">2021-04-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">31.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>98分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>后端开发面试题</h1>
-<h1>后端开发面试知识点大纲：</h1>
-<h2 id="语言类（C-）：">语言类（C++）：</h2>
-<h3 id="关键字作用解释：">关键字作用解释：</h3>
-<p>volatile作用</p>
-<pre><code>Volatile关键词的第一个特性：易变性。所谓的易变性，在汇编层面反映出来，就是两条语句，下一条语句不会直接使用上一条语句对应的volatile变量的寄存器内容，而是重新从内存中读取。
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>lwscode | lwscode</title><meta name="keywords" content="blog"><meta name="author" content="lws"><meta name="copyright" content="lws"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="后端开发面试题 后端开发面试知识点大纲： 语言类（C++）： 关键字作用解释： volatile作用 Volatile关键词的第一个特性：易变性。所谓的易变性，在汇编层面反映出来，就是两条语句，下一条语句不会直接使用上一条语句对应的volatile变量的寄存器内容，而是重新从内存中读取。  Volatile关键词的第二个特性：“不可优化”特性。volatile告诉编译器，不要对我这个变量进行各种激"><meta property="og:type" content="article"><meta property="og:title" content="lwscode"><meta property="og:url" content="https://lwscode.cn/12/"><meta property="og:site_name" content="lwscode"><meta property="og:description" content="后端开发面试题 后端开发面试知识点大纲： 语言类（C++）： 关键字作用解释： volatile作用 Volatile关键词的第一个特性：易变性。所谓的易变性，在汇编层面反映出来，就是两条语句，下一条语句不会直接使用上一条语句对应的volatile变量的寄存器内容，而是重新从内存中读取。  Volatile关键词的第二个特性：“不可优化”特性。volatile告诉编译器，不要对我这个变量进行各种激"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><meta property="article:published_time" content="2021-04-14T13:07:14.941Z"><meta property="article:modified_time" content="2021-04-16T10:27:00.022Z"><meta property="article:author" content="lws"><meta property="article:tag" content="blog"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lwscode.cn/12/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google_site_verification" content="UenUs27jwiTQ3X7gEA7Hr8yF8d6MhE-1d0UhCmsXtII"><link rel="manifest" href="/pwa/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?0f2325a11f6dbcc60f895e93da30c970";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script>const GLOBAL_CONFIG={root:"/",algolia:{appId:"1PX0RW7O2R",apiKey:"b4cb89572c9078c767d8e8c8c8f03b53",indexName:"lwscode",hits:{per_page:6},languages:{input_placeholder:"搜索文章",hits_empty:"找不到您查询的内容：${query}",hits_stats:"找到 ${hits} 条结果，用时 ${time} 毫秒"}},localSearch:void 0,translate:void 0,noticeOutdate:void 0,highlight:{plugin:"highlighjs",highlightCopy:!0,highlightLang:!0,highlightHeightLimit:200},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},relativeDate:{homepage:!0,post:!1},runtime:"天",date_suffix:{just:"刚刚",min:"分钟前",hour:"小时前",day:"天前",month:"个月前"},copyright:void 0,lightbox:"fancybox",Snackbar:{chs_to_cht:"你已切换为繁体",cht_to_chs:"你已切换为简体",day_to_night:"你已切换为深色模式",night_to_day:"你已切换为浅色模式",bgLight:"#49b1f5",bgDark:"#121212",position:"top-center"},source:{jQuery:"https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js",justifiedGallery:{js:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js",css:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css"},fancybox:{js:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js",css:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"}},isPhotoFigcaption:!1,islazyload:!1,isanchor:!0}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2021-04-16 18:27:00"}</script><noscript><style>#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(e=>{e.saveToLocal={set:function(e,t,o){if(0===o)return;const n=864e5*o,a={value:t,expiry:(new Date).getTime()+n};localStorage.setItem(e,JSON.stringify(a))},get:function(e){const t=localStorage.getItem(e);if(!t)return;const o=JSON.parse(t);if(!((new Date).getTime()>o.expiry))return o.value;localStorage.removeItem(e)}},e.getScript=e=>new Promise((t,o)=>{const n=document.createElement("script");n.src=e,n.async=!0,n.onerror=o,n.onload=n.onreadystatechange=function(){const e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(n.onload=n.onreadystatechange=null,t())},document.head.appendChild(n)}),e.activateDarkMode=function(){document.documentElement.setAttribute("data-theme","dark"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#0d0d0d")},e.activateLightMode=function(){document.documentElement.setAttribute("data-theme","light"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#ffffff")};const t=saveToLocal.get("theme");"dark"===t?activateDarkMode():"light"===t&&activateLightMode();const o=saveToLocal.get("aside-status");void 0!==o&&("hide"===o?document.documentElement.classList.add("hide-aside"):document.documentElement.classList.remove("hide-aside"));const n=saveToLocal.get("global-font-size");void 0!==n&&document.documentElement.style.setProperty("--global-font-size",n+"px")})(window)</script><style>#toggle-sidebar{bottom:80px}</style><link rel="stylesheet" href="/self/kimbie.css"><style>.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lwscode" type="application/atom+xml"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.png" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image:url(https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lwscode</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-14T13:07:14.941Z" title="发表于 2021-04-14 21:07:14">2021-04-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-16T10:27:00.022Z" title="更新于 2021-04-16 18:27:00">2021-04-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">31.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>98分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>后端开发面试题</h1><h1>后端开发面试知识点大纲：</h1><h2 id="语言类（C-）：">语言类（C++）：</h2><h3 id="关键字作用解释：">关键字作用解释：</h3><p>volatile作用</p><pre><code>Volatile关键词的第一个特性：易变性。所谓的易变性，在汇编层面反映出来，就是两条语句，下一条语句不会直接使用上一条语句对应的volatile变量的寄存器内容，而是重新从内存中读取。
 
 Volatile关键词的第二个特性：“不可优化”特性。volatile告诉编译器，不要对我这个变量进行各种激进的优化，甚至将变量直接消除，保证程序员写在代码中的指令，一定会被执行。
 Volatile关键词的第三个特性：”顺序性”，能够保证Volatile变量间的顺序性，编译器不会进行乱序优化。
@@ -165,9 +6,7 @@ C/C++ Volatile变量，与非Volatile变量之间的操作，是可能被编译�
 针对这个多线程的应用，真正正确的做法，是构建一个happens-before语义。
 
 [C/C++ Volatile关键词深度剖析](http://hedengcheng.com/?p=725)
-</code></pre>
-<p>static</p>
-<pre><code>控制变量的存储方式和可见性。 
+</code></pre><p>static</p><pre><code>控制变量的存储方式和可见性。 
 
 (1)修饰局部变量
 
@@ -184,9 +23,7 @@ C/C++ Volatile变量，与非Volatile变量之间的操作，是可能被编译�
 (4)C++中的static
 
 如果在C++中对类中的某个函数用static进行修饰，则表示该函数属于一个类而不是属于此类的任何特定对象；如果对类中的某个变量进行static修饰，表示该变量为类以及其所有的对象所有。它们在存储空间中都只存在一个副本。可以通过类和对象去调用。	
-</code></pre>
-<p>const的含义及实现机制</p>
-<pre><code> const名叫常量限定符，用来限定特定变量，以通知编译器该变量是不可修改的。习惯性的使用const，可以避免在函数中对某些不应修改的变量造成可能的改动。
+</code></pre><p>const的含义及实现机制</p><pre><code> const名叫常量限定符，用来限定特定变量，以通知编译器该变量是不可修改的。习惯性的使用const，可以避免在函数中对某些不应修改的变量造成可能的改动。
  
 (1)const修饰基本数据类型
 
@@ -220,16 +57,12 @@ C/C++ Volatile变量，与非Volatile变量之间的操作，是可能被编译�
 常量对象只能调用常量函数，别的成员函数都不能调用。
 
 http://www.cnblogs.com/wintergrass/archive/2011/04/15/2015020.html
-</code></pre>
-<p>extern</p>
-<pre><code>在C语言中，修饰符extern用在变量或者函数的声明前，用来说明“此变量/函数是在别处定义的，要在此处引用”。
+</code></pre><p>extern</p><pre><code>在C语言中，修饰符extern用在变量或者函数的声明前，用来说明“此变量/函数是在别处定义的，要在此处引用”。
 
 注意extern声明的位置对其作用域也有关系，如果是在main函数中进行声明的，则只能在main函数中调用，在其它函数中不能调用。其实要调用其它文件中的函数和变量，只需把该文件用#include包含进来即可，为啥要用extern？因为用extern会加速程序的编译过程，这样能节省时间。
 
 在C++中extern还有另外一种作用，用于指示C或者C＋＋函数的调用规范。比如在C＋＋中调用C库函数，就需要在C＋＋程序中用extern “C”声明要引用的函数。这是给链接器用的，告诉链接器在链接的时候用C函数规范来链接。主要原因是C＋＋和C程序编译完成后在目标代码中命名规则不同，用此来解决名字匹配的问题。
-</code></pre>
-<p>宏定义和展开、内联函数区别，</p>
-<pre><code>内联函数是代码被插入到调用者代码处的函数。如同 #define 宏，内联函数通过避免被调用的开销来提高执行效率，尤其是它能够通过调用（“过程化集成”）被编译器优化。 宏定义不检查函数参数，返回值什么的，只是展开，相对来说，内联函数会检查参数类型，所以更安全。	内联函数和宏很类似，而区别在于，宏是由预处理器对宏进行替代，而内联函数是通过编译器控制来实现的。而且内联函数是真正的函数，只是在需要用到的时候，内联函数像宏一样的展开，所以取消了函数的参数压栈，减少了调用的开销。
+</code></pre><p>宏定义和展开、内联函数区别，</p><pre><code>内联函数是代码被插入到调用者代码处的函数。如同 #define 宏，内联函数通过避免被调用的开销来提高执行效率，尤其是它能够通过调用（“过程化集成”）被编译器优化。 宏定义不检查函数参数，返回值什么的，只是展开，相对来说，内联函数会检查参数类型，所以更安全。	内联函数和宏很类似，而区别在于，宏是由预处理器对宏进行替代，而内联函数是通过编译器控制来实现的。而且内联函数是真正的函数，只是在需要用到的时候，内联函数像宏一样的展开，所以取消了函数的参数压栈，减少了调用的开销。
 
 宏是预编译器的输入，然后宏展开之后的结果会送去编译器做语法分析。宏与函数等处于不同的级别，操作不同的实体。宏操作的是 token, 可以进行 token的替换和连接等操作，在语法分析之前起作用。而函数是语言中的概念，会在语法树中创建对应的实体，内联只是函数的一个属性。
 对于问题：有了函数要它们何用？答案是：一：函数并不能完全替代宏，有些宏可以在当前作用域生成一些变量，函数做不到。二：内联函数只是函数的一种，内联是给编译器的提示，告诉它最好把这个函数在被调用处展开，省掉一个函数调用的开销（压栈，跳转，返回）
@@ -239,13 +72,7 @@ http://www.cnblogs.com/wintergrass/archive/2011/04/15/2015020.html
 内联函数必须是和函数体申明在一起，才有效。
 
 [宏定义和内联函数区别](http://www.cnblogs.com/chengxuyuancc/archive/2013/04/04/2999844.html)
-</code></pre>
-<h3 id="库函数实现：">库函数实现：</h3>
-<p>malloc,strcpy,strcmp的实现，常用库函数实现，哪些库函数属于高危函数</p>
-<h3 id="STL原理及实现：">STL原理及实现：</h3>
-<p>STL各类型容器实现，STL共有六大组件</p>
-<p>STL提供六大组件，彼此可以组合套用：</p>
-<pre><code>1、容器（Containers）：各种数据结构，如：序列式容器vector、list、deque、关联式容器set、map、multiset、multimap。用来存放数据。从实现的角度来看，STL容器是一种class template。
+</code></pre><h3 id="库函数实现：">库函数实现：</h3><p>malloc,strcpy,strcmp的实现，常用库函数实现，哪些库函数属于高危函数</p><h3 id="STL原理及实现：">STL原理及实现：</h3><p>STL各类型容器实现，STL共有六大组件</p><p>STL提供六大组件，彼此可以组合套用：</p><pre><code>1、容器（Containers）：各种数据结构，如：序列式容器vector、list、deque、关联式容器set、map、multiset、multimap。用来存放数据。从实现的角度来看，STL容器是一种class template。
 
 2、算法（algorithms）：各种常用算法，如：sort、search、copy、erase。从实现的角度来看，STL算法是一种 function template。注意一个问题：任何的一个STL算法，都需要获得由一对迭代器所标示的区间，用来表示操作范围。这一对迭代器所标示的区间都是前闭后开区间，例如[first, last)
 
@@ -276,45 +103,27 @@ set,map,multiset,multimap-基于红黑树(RB-tree)，一种加上了额外平衡
 hash table-散列表。将待存数据的key经过映射函数变成一个数组(一般是vector)的索引，例如：数据的key%数组的大小＝数组的索引(一般文本通过算法也可以转换为数字)，然后将数据当作此索引的数组元素。有些数据的key经过算法的转换可能是同一个数组的索引值(碰撞问题，可以用线性探测，二次探测来解决)，STL是用开链的方法来解决的，每一个数组的元素维护一个list，他把相同索引值的数据存入一个list，这样当list比较短时执行删除，插入，搜索等算法比较快。
 
 hash_map,hash_set,hash_multiset,hash_multimap-基于hashtable。
-</code></pre>
-<p>[STL六大组件] (<a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/chenguolinblog/article/details/30336805">http://blog.csdn.net/chenguolinblog/article/details/30336805</a>)<br>
-什么是“标准非STL容器”？</p>
-<p>list和vector有什么区别？</p>
-<pre><code>vector拥有一段连续的内存空间，因此支持随机存取，如果需要高效的随即存取，而不在乎插入和删除的效率，使用vector。
+</code></pre><p>[STL六大组件] (<a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/chenguolinblog/article/details/30336805">http://blog.csdn.net/chenguolinblog/article/details/30336805</a>)<br>什么是“标准非STL容器”？</p><p>list和vector有什么区别？</p><pre><code>vector拥有一段连续的内存空间，因此支持随机存取，如果需要高效的随即存取，而不在乎插入和删除的效率，使用vector。
 list拥有一段不连续的内存空间，因此不支持随机存取，如果需要大量的插入和删除，而不关心随即存取，则应使用list。
-</code></pre>
-<h3 id="虚函数：">虚函数：</h3>
-<p>虚函数的作用和实现原理，什么是虚函数,有什么作用?</p>
-<pre><code>C++的多态分为静态多态（编译时多态）和动态多态（运行时多态）两大类。静态多态通过重载、模板来实现；动态多态就是通过本文的主角虚函数来体现的。	
+</code></pre><h3 id="虚函数：">虚函数：</h3><p>虚函数的作用和实现原理，什么是虚函数,有什么作用?</p><pre><code>C++的多态分为静态多态（编译时多态）和动态多态（运行时多态）两大类。静态多态通过重载、模板来实现；动态多态就是通过本文的主角虚函数来体现的。	
 	
 虚函数实现原理:包括虚函数表、虚函数指针等 
 
 虚函数的作用说白了就是：当调用一个虚函数时，被执行的代码必须和调用函数的对象的动态类型相一致。编译器需要做的就是如何高效的实现提供这种特性。不同编译器实现细节也不相同。大多数编译器通过vtbl（virtual table）和vptr（virtual table pointer）来实现的。 当一个类声明了虚函数或者继承了虚函数，这个类就会有自己的vtbl。vtbl实际上就是一个函数指针数组，有的编译器用的是链表，不过方法都是差不多。vtbl数组中的每一个元素对应一个函数指针指向该类的一个虚函数，同时该类的每一个对象都会包含一个vptr，vptr指向该vtbl的地址。
-</code></pre>
-<p>结论：</p>
-<pre><code>每个声明了虚函数或者继承了虚函数的类，都会有一个自己的vtbl
+</code></pre><p>结论：</p><pre><code>每个声明了虚函数或者继承了虚函数的类，都会有一个自己的vtbl
 同时该类的每个对象都会包含一个vptr去指向该vtbl
 虚函数按照其声明顺序放于vtbl表中, vtbl数组中的每一个元素对应一个函数指针指向该类的虚函数
 如果子类覆盖了父类的虚函数，将被放到了虚表中原来父类虚函数的位置
 在多继承的情况下，每个父类都有自己的虚表。子类的成员函数被放到了第一个父类的表中
-</code></pre>
-<p>衍生问题:为什么 C++里访问虚函数比访问普通函数慢?</p>
-<pre><code>单继承时性能差不多，多继承的时候会慢
-</code></pre>
-<p>调用性能方面</p>
-<pre><code>从前面虚函数的调用过程可知。当调用虚函数时过程如下（引自More Effective C++）:
+</code></pre><p>衍生问题:为什么 C++里访问虚函数比访问普通函数慢?</p><pre><code>单继承时性能差不多，多继承的时候会慢
+</code></pre><p>调用性能方面</p><pre><code>从前面虚函数的调用过程可知。当调用虚函数时过程如下（引自More Effective C++）:
 
 通过对象的 vptr 找到类的 vtbl。这是一个简单的操作,因为编译器知道在对象内 哪里能找到 vptr(毕竟是由编译器放置的它们)。因此这个代价只是一个偏移调整(以得到 vptr)和一个指针的间接寻址(以得到 vtbl)。
 找到对应 vtbl 内的指向被调用函数的指针。这也是很简单的, 因为编译器为每个虚函数在 vtbl 内分配了一个唯一的索引。这步的代价只是在 vtbl 数组内 的一个偏移。
 调用第二步找到的的指针所指向的函数。
 在单继承的情况下，调用虚函数所需的代价基本上和非虚函数效率一样，在大多数计算机上它多执行了很少的一些指令，所以有很多人一概而论说虚函数性能不行是不太科学的。在多继承的情况下，由于会根据多个父类生成多个vptr，在对象里为寻找 vptr 而进行的偏移量计算会变得复杂一些，但这些并不是虚函数的性能瓶颈。 虚函数运行时所需的代价主要是虚函数不能是内联函。这也是非常好理解的，是因为内联函数是指在编译期间用被调用的函数体本身来代替函数调用的指令，但是虚函数的“虚”是指“直到运行时才能知道要调用的是哪一个函数。”但虚函数的运行时多态特性就是要在运行时才知道具体调用哪个虚函数，所以没法在编译时进行内联函数展开。当然如果通过对象直接调用虚函数它是可以被内联，但是大多数虚函数是通过对象的指针或引用被调用的，这种调用不能被内联。 因为这种调用是标准的调用方式，所以虚函数实际上不能被内联。
-</code></pre>
-<p>占用空间方面</p>
-<pre><code>在上面的虚函数实现原理部分，可以看到为了实现运行时多态机制，编译器会给每一个包含虚函数或继承了虚函数的类自动建立一个虚函数表，所以虚函数的一个代价就是会增加类的体积。在虚函数接口较少的类中这个代价并不明显，虚函数表vtbl的体积相当于几个函数指针的体积，如果你有大量的类或者在每个类中有大量的虚函数,你会发现 vtbl 会占用大量的地址空间。但这并不是最主要的代价，主要的代价是发生在类的继承过程中，在上面的分析中，可以看到，当子类继承父类的虚函数时，子类会有自己的vtbl，如果子类只覆盖父类的一两个虚函数接口，子类vtbl的其余部分内容会与父类重复。这在如果存在大量的子类继承，且重写父类的虚函数接口只占总数的一小部分的情况下，会造成大量地址空间浪费。在一些GUI库上这种大量子类继承自同一父类且只覆盖其中一两个虚函数的情况是经常有的，这样就导致UI库的占用内存明显变大。 由于虚函数指针vptr的存在，虚函数也会增加该类的每个对象的体积。在单继承或没有继承的情况下，类的每个对象会多一个vptr指针的体积，也就是4个字节；在多继承的情况下，类的每个对象会多N个（N＝包含虚函数的父类个数）vptr的体积，也就是4N个字节。当一个类的对象体积较大时，这个代价不是很明显，但当一个类的对象很轻量的时候，如成员变量只有4个字节，那么再加上4（或4N）个字节的vptr，对象的体积相当于翻了1（或N）倍，这个代价是非常大的。
-</code></pre>
-<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://glgjing.github.io/blog/2015/01/03/c-plus-plus-xu-han-shu-qian-xi/">C++虚函数浅析</a></p>
-<p>纯虚函数，为什么需要纯虚函数？</p>
-<pre><code>纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。在基类中实现纯虚函数的方法是在函数原型后加“=0”
+</code></pre><p>占用空间方面</p><pre><code>在上面的虚函数实现原理部分，可以看到为了实现运行时多态机制，编译器会给每一个包含虚函数或继承了虚函数的类自动建立一个虚函数表，所以虚函数的一个代价就是会增加类的体积。在虚函数接口较少的类中这个代价并不明显，虚函数表vtbl的体积相当于几个函数指针的体积，如果你有大量的类或者在每个类中有大量的虚函数,你会发现 vtbl 会占用大量的地址空间。但这并不是最主要的代价，主要的代价是发生在类的继承过程中，在上面的分析中，可以看到，当子类继承父类的虚函数时，子类会有自己的vtbl，如果子类只覆盖父类的一两个虚函数接口，子类vtbl的其余部分内容会与父类重复。这在如果存在大量的子类继承，且重写父类的虚函数接口只占总数的一小部分的情况下，会造成大量地址空间浪费。在一些GUI库上这种大量子类继承自同一父类且只覆盖其中一两个虚函数的情况是经常有的，这样就导致UI库的占用内存明显变大。 由于虚函数指针vptr的存在，虚函数也会增加该类的每个对象的体积。在单继承或没有继承的情况下，类的每个对象会多一个vptr指针的体积，也就是4个字节；在多继承的情况下，类的每个对象会多N个（N＝包含虚函数的父类个数）vptr的体积，也就是4N个字节。当一个类的对象体积较大时，这个代价不是很明显，但当一个类的对象很轻量的时候，如成员变量只有4个字节，那么再加上4（或4N）个字节的vptr，对象的体积相当于翻了1（或N）倍，这个代价是非常大的。
+</code></pre><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://glgjing.github.io/blog/2015/01/03/c-plus-plus-xu-han-shu-qian-xi/">C++虚函数浅析</a></p><p>纯虚函数，为什么需要纯虚函数？</p><pre><code>纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。在基类中实现纯虚函数的方法是在函数原型后加“=0”
 
 virtual void funtion1()=0
 
@@ -328,13 +137,9 @@ virtual void funtion1()=0
 纯虚函数的意义，让所有的类对象（主要是派生类对象）都可以执行纯虚函数的动作，但类无法为纯虚函数提供一个合理的缺省实现。所以类纯虚函数的声明就是在告诉子类的设计者，“你必须提供一个纯虚函数的实现，但我不知道你会怎样实现它”。
 
 [虚函数和纯虚函数的区别](http://blog.csdn.net/hackbuteer1/article/details/7558868)
-</code></pre>
-<p>为什么需要虚析构函数,什么时候不需要?父类的析构函数为什么要定义为虚函数</p>
-<pre><code>一般情况下类的析构函数里面都是释放内存资源，而析构函数不被调用的话就会造成内存泄漏。这样做是为了当用一个基类的指针删除一个派生类的对象时，派生类的析构函数会被调用。
+</code></pre><p>为什么需要虚析构函数,什么时候不需要?父类的析构函数为什么要定义为虚函数</p><pre><code>一般情况下类的析构函数里面都是释放内存资源，而析构函数不被调用的话就会造成内存泄漏。这样做是为了当用一个基类的指针删除一个派生类的对象时，派生类的析构函数会被调用。
 当然，并不是要把所有类的析构函数都写成虚函数。因为当类里面有虚函数的时候，编译器会给类添加一个虚函数表，里面来存放虚函数指针，这样就会增加类的存储空间。所以，只有当一个类被用来作为基类的时候，才把析构函数写成虚函数。
-</code></pre>
-<p>内联函数、构造函数、静态成员函数可以是虚函数吗?</p>
-<pre><code>inline, static, constructor三种函数都不能带有virtual关键字。
+</code></pre><p>内联函数、构造函数、静态成员函数可以是虚函数吗?</p><pre><code>inline, static, constructor三种函数都不能带有virtual关键字。
 inline是编译时展开，必须有实体；
 static属于class自己的，也必须有实体；
 virtual函数基于vtable（内存空间），constructor函数如果是virtual的，调用时也需要根据vtable寻找，但是constructor是virtual的情况下是找不到的，因为constructor自己本身都不存在了，创建不到class的实例，没有实例，class的成员（除了public static/protected static for friend class/functions，其余无论是否virtual）都不能被访问了。
@@ -344,10 +149,7 @@ virtual函数基于vtable（内存空间），constructor函数如果是virtual�
 构造函数不能是虚函数。而且，在构造函数中调用虚函数，实际执行的是父类的对应函数，因为自己还没有构造好, 多态是被disable的。 
 
 静态的对象是属于整个类的，不对某一个对象而言，同时其函数的指针存放也不同于一般的成员函数，其无法成为一个对象的虚函数的指针以实现由此带来的动态机制。			
-</code></pre>
-<p>构造函数中可以调用虚函数吗?</p>
-<p>最后，总结一下关于虚函数的一些常见问题：</p>
-<pre><code>1) 虚函数是动态绑定的，也就是说，使用虚函数的指针和引用能够正确找到实际类的对应函数，而不是执行定义类的函数。这是虚函数的基本功能，就不再解释了。 
+</code></pre><p>构造函数中可以调用虚函数吗?</p><p>最后，总结一下关于虚函数的一些常见问题：</p><pre><code>1) 虚函数是动态绑定的，也就是说，使用虚函数的指针和引用能够正确找到实际类的对应函数，而不是执行定义类的函数。这是虚函数的基本功能，就不再解释了。 
 
 2) 构造函数不能是虚函数。而且，在构造函数中调用虚函数，实际执行的是父类的对应函数，因为自己还没有构造好, 多态是被disable的。 
 
@@ -362,18 +164,11 @@ virtual函数基于vtable（内存空间），constructor函数如果是virtual�
 7) 非纯的虚函数必须有定义体，不然是一个错误。 
 
 8) 派生类的override虚函数定义必须和父类完全一致。除了一个特例，如果父类中返回值是一个指针或引用，子类override时可以返回这个指针（或引用）的派生。例如，在上面的例子中，在Base中定义了 virtual Base* clone(); 在Derived中可以定义为 virtual Derived* clone()。可以看到，这种放松对于Clone模式是非常有用的。
-</code></pre>
-<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.cnblogs.com/chio/archive/2007/09/10/888260.html">虚析构函数(√)、纯虚析构函数(√)、虚构造函数(X)</a></p>
-<p>为什么需要虚继承?虚继承实现原理解析，</p>
-<pre><code>虚拟继承是多重继承中特有的概念。虚拟基类是为解决多重继承而出现的。
+</code></pre><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.cnblogs.com/chio/archive/2007/09/10/888260.html">虚析构函数(√)、纯虚析构函数(√)、虚构造函数(X)</a></p><p>为什么需要虚继承?虚继承实现原理解析，</p><pre><code>虚拟继承是多重继承中特有的概念。虚拟基类是为解决多重继承而出现的。
 如:类D继承自类B1、B2，而类B1、B2都继 承自类A，因此在类D中两次出现类A中的变量和函数。为了节省内存空间，可以将B1、B2对A的继承定义为虚拟继承，而A就成了虚拟基类,虚拟继承在一般的应用中很少用到，所以也往往被忽视，这也主要是因为在C++中，多重继承是不推荐的，也并不常用，而一旦离开了多重继承，虚拟继承就完全失去了存在的必要因为这样只会降低效率和占用更多的空间。
 
 虚继承的特点是，在任何派生类中的virtual基类总用同一个（共享）对象表示，
-</code></pre>
-<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/hyg0811/article/details/11951855">C++虚拟继承</a></p>
-<h3 id="设计模式：">设计模式：</h3>
-<p>C++单例模式写法:</p>
-<pre><code>静态化并不是单例 (Singleton) 模式:
+</code></pre><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/hyg0811/article/details/11951855">C++虚拟继承</a></p><h3 id="设计模式：">设计模式：</h3><p>C++单例模式写法:</p><pre><code>静态化并不是单例 (Singleton) 模式:
 第一, 静态成员变量初始化顺序不依赖构造函数, 得看编译器心情的, 没法保证初始化顺序 (极端情况: 有 a b 两个成员对象, b 需要把 a 作为初始化参数传入, 你的类就 必须 得要有构造函数, 并确保初始化顺序).
 
 第二, 最严重的问题, 失去了面对对象的重要特性 -- &quot;多态&quot;, 静态成员方法不可能是 virtual 的. Log 类的子类没法享受 &quot;多态&quot; 带来的便利.
@@ -473,41 +268,23 @@ private:
 另外, 多个不同的 Singleton 实例的析构顺序与构造顺序相反.
 
 [C++ Singleton (单例) 模式最优实现](http://blog.yangyubo.com/2009/06/04/best-cpp-singleton-pattern/)
-</code></pre>
-<p>用C++设计一个不能被继承的类。</p>
-<pre><code>构造函数或析构函数为私有函数，所以该类是无法被继承的，
-</code></pre>
-<p>如何定义一个只能在堆上定义对象的类?栈上呢</p>
-<pre><code>只能在堆内存上实例化的类：将析构函数定义为private，在栈上不能自动调用析构函数，只能手动调用。也可以将构造函数定义为private，但这样需要手动写一个函数实现对象的构造。
+</code></pre><p>用C++设计一个不能被继承的类。</p><pre><code>构造函数或析构函数为私有函数，所以该类是无法被继承的，
+</code></pre><p>如何定义一个只能在堆上定义对象的类?栈上呢</p><pre><code>只能在堆内存上实例化的类：将析构函数定义为private，在栈上不能自动调用析构函数，只能手动调用。也可以将构造函数定义为private，但这样需要手动写一个函数实现对象的构造。
 
 只能在栈内存上实例化的类：将函数operator new和operator delete定义为private，这样使用new操作符创建对象时候，无法调用operator new，delete销毁对象也无法调用operator delete。
 
 
 [设计一个只能在堆上或栈上实例化的类](http://www.cnblogs.com/luxiaoxun/archive/2012/08/03/2621827.html)
-</code></pre>
-<p>满足上述3个条件</p>
-<pre><code>[C++中的单例模式](http://www.cnblogs.com/xiehongfeng100/p/4781013.html)
-</code></pre>
-<p>多重类构造和析构的顺序</p>
-<pre><code>先调用基类的构造函数，在调用派生类的构造函数
+</code></pre><p>满足上述3个条件</p><pre><code>[C++中的单例模式](http://www.cnblogs.com/xiehongfeng100/p/4781013.html)
+</code></pre><p>多重类构造和析构的顺序</p><pre><code>先调用基类的构造函数，在调用派生类的构造函数
 
 先构造的后析构，后构造的先析构
-</code></pre>
-<h3 id="内存分配：">内存分配：</h3>
-<p>内存分配方式有三种：</p>
-<pre><code>（1）从静态存储区域分配。内存在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都存在。例如全局变量，static变量。
+</code></pre><h3 id="内存分配：">内存分配：</h3><p>内存分配方式有三种：</p><pre><code>（1）从静态存储区域分配。内存在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都存在。例如全局变量，static变量。
 
 （2）在栈上创建。在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。
 
 （3）从堆上分配，亦称动态内存分配。程序在运行的时候用malloc或new申请任意多少的内存，程序员自己负责在何时用free或delete释放内存。动态内存的生存期由我们决定，使用非常灵活，但问题也最多。
-</code></pre>
-<p>c++运行时各类型内存分配（堆，栈，静态区，数据段，BSS，ELF），BSS段，<br>
-sizeof一个类求大小（字节对齐原则）、</p>
-<p>C++四种强制类型转换，</p>
-<p>int char float,long long long类型长度</p>
-<h3 id="指针：">指针：</h3>
-<p>防止指针的越界使用，</p>
-<pre><code>必须让指针指向一个有效的内存地址, 
+</code></pre><p>c++运行时各类型内存分配（堆，栈，静态区，数据段，BSS，ELF），BSS段，<br>sizeof一个类求大小（字节对齐原则）、</p><p>C++四种强制类型转换，</p><p>int char float,long long long类型长度</p><h3 id="指针：">指针：</h3><p>防止指针的越界使用，</p><pre><code>必须让指针指向一个有效的内存地址, 
 1 防止数组越界 
 2 防止向一块内存中拷贝过多的内容 
 3 防止使用空指针 
@@ -515,28 +292,17 @@ sizeof一个类求大小（字节对齐原则）、</p>
 5 防止改变指向静态存储区的内容 
 6 防止两次释放一个指针 
 7 防止使用野指针. 
-</code></pre>
-<p>什么是指针退化及防止、</p>
-<pre><code>如果用一个数组作为函数入参 
+</code></pre><p>什么是指针退化及防止、</p><pre><code>如果用一个数组作为函数入参 
 比如 
 void fun(char a[100]) 
 &#123; 
 cout&lt;&lt;SIZEOF(A)&lt;
 &#125;
-</code></pre>
-<p>指针的移动问题，</p>
-<pre><code>指针P ++具体移动的字节数等于指针指向的变量类型大小. 
-</code></pre>
-<p>Const,volatile修饰指针的含义，</p>
-<p>堆和栈上的指针，</p>
-<pre><code>指针所指向的这块内存是在哪里分配的,在堆上称为堆上的指针,在栈上为栈上的指针. 
+</code></pre><p>指针的移动问题，</p><pre><code>指针P ++具体移动的字节数等于指针指向的变量类型大小. 
+</code></pre><p>Const,volatile修饰指针的含义，</p><p>堆和栈上的指针，</p><pre><code>指针所指向的这块内存是在哪里分配的,在堆上称为堆上的指针,在栈上为栈上的指针. 
 在堆上的指针,可以保存在全局数据结构中,供不同函数使用访问同一块内存. 
 在栈上的指针,在函数退出后,该内存即不可访问. 	
-</code></pre>
-<p>指针的释放及内存泄露原因，</p>
-<p>指针作为函数的参数，函数指针，</p>
-<p>指针和引用及地址的区别，数组名，</p>
-<pre><code>指针与地址的区别? 
+</code></pre><p>指针的释放及内存泄露原因，</p><p>指针作为函数的参数，函数指针，</p><p>指针和引用及地址的区别，数组名，</p><pre><code>指针与地址的区别? 
 区别: 
 1指针意味着已经有一个指针变量存在,他的值是一个地址,指针变量本身也存放在一个长度为四个字节的地址当中,而地址概念本身并不代表有任何变量存在. 
 2 指针的值,如果没有限制,通常是可以变化的,也可以指向另外一个地址. 
@@ -563,19 +329,14 @@ cout&lt;&lt;SIZEOF(A)&lt;
 7. 指针和引用的自增(++)运算意义不一样；
 
 8.从内存分配上看：程序为指针变量分配内存区域，而引用不需要分配内存区域。
-</code></pre>
-<p>迭代器与普通指针有什么区别</p>
-<p>智能指针的原理,</p>
-<pre><code>智能指针：实际指行为类似于指针的类对象 ，它的一种通用实现方法是采用引用计数的方法。
+</code></pre><p>迭代器与普通指针有什么区别</p><p>智能指针的原理,</p><pre><code>智能指针：实际指行为类似于指针的类对象 ，它的一种通用实现方法是采用引用计数的方法。
 1.智能指针将一个计数器与类指向的对象相关联，引用计数跟踪共有多少个类对象共享同一指针。
 2.每次创建类的新对象时，初始化指针并将引用计数置为1；
 3.当对象作为另一对象的副本而创建时，拷贝构造函数拷贝指针并增加与之相应的引用计数；
 4.对一个对象进行赋值时，赋值操作符减少左操作数所指对象的引用计数（如果引用计数为减至0，则删除对象），并增加右操作数所指对象的引用计数；这是因为左侧的指针指向了右侧指针所指向的对象，因此右指针所指向的对象的引用计数+1；
 5.调用析构函数时，构造函数减少引用计数（如果引用计数减至0，则删除基础对象）。
 6.实现智能指针有两种经典策略：一是引入辅助类，二是使用句柄类。这里主要讲一下引入辅助类的方法
-</code></pre>
-<p>其他：override和overload的区别，</p>
-<pre><code>override（重写） 
+</code></pre><p>其他：override和overload的区别，</p><pre><code>override（重写） 
 1、方法名、参数、返回值相同。
 2、子类方法不能缩小父类方法的访问权限。
 3、子类方法不能抛出比父类方法更多的异常(但子类方法可以不抛出异常)。
@@ -595,9 +356,7 @@ Overload是重载的意思，Override是覆盖的意思，也就是重写。
 重写Override表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。
 
 子类覆盖父类的方法时，只能比父类抛出更少的异常，或者是抛出父类抛出的异常的子异常，因为子类可以解决父类的一些问题，不能比父类有更多的问题。子类方法的访问权限只能比父类的更大，不能更小。如果父类的方法是private类型，那么，子类则不存在覆盖的限制，相当于子类中增加了一个全新的方法。
-</code></pre>
-<p>写string类的构造，析构，拷贝函数</p>
-<pre><code>String 类的原型如下
+</code></pre><p>写string类的构造，析构，拷贝函数</p><pre><code>String 类的原型如下
 class String
 &#123;
   public:
@@ -663,38 +422,23 @@ AD=B;
 AD.ShowString();
 
 &#125;
-</code></pre>
-<p>1 指针的四要素</p>
-<pre><code>1指针变量,表示一个内存地址,通常为逻辑地址,与实际的物理地址还有一个映射关系. 
+</code></pre><p>1 指针的四要素</p><pre><code>1指针变量,表示一个内存地址,通常为逻辑地址,与实际的物理地址还有一个映射关系. 
 2指针变量的长度,在WIN32下为四个字节, 
 3指针指向的变量 
    该内存地址空间下存放的变量,具体内容可能是各种类型的变量. 
 4 指针指向的变量的长度,以该内存地址空间开始的内存空间大小. 
-</code></pre>
-<h2 id="数据结构算法：">数据结构算法：</h2>
-<p>链表、树、哈希表、有效避免hash结果值的碰撞</p>
-<p>排序算法性能比较</p>
-<h2 id="操作系统：">操作系统：</h2>
-<p>linux的内存管理机制，内存寻址方式，什么叫虚拟内存，内存调页算法，任务调度算法、</p>
-<pre><code>	Linux虚拟内存的实现需要6种机制的支持：地址映射机制、内存分配回收机制、缓存和刷新机制、请求页机制、交换机制和内存共享机制
+</code></pre><h2 id="数据结构算法：">数据结构算法：</h2><p>链表、树、哈希表、有效避免hash结果值的碰撞</p><p>排序算法性能比较</p><h2 id="操作系统：">操作系统：</h2><p>linux的内存管理机制，内存寻址方式，什么叫虚拟内存，内存调页算法，任务调度算法、</p><pre><code>	Linux虚拟内存的实现需要6种机制的支持：地址映射机制、内存分配回收机制、缓存和刷新机制、请求页机制、交换机制和内存共享机制
 
 内存管理程序通过映射机制把用户程序的逻辑地址映射到物理地址。当用户程序运行时，如果发现程序中要用的虚地址没有对应的物理内存，就发出了请求页要求。如果有空闲的内存可供分配，就请求分配内存(于是用到了内存的分配和回收)，并把正在使用的物理页记录在缓存中(使用了缓存机制)。如果没有足够的内存可供分配，那么就调用交换机制；腾出一部分内存。另外，在地址映射中要通过TLB(翻译后援存储器)来寻找物理页；交换机制中也要用到交换缓存，并且把物理页内容交换到交换文件中，也要修改页表来映射文件地址。
 进程和线程、进程间及线程通信方式、共享内存的使用实现原理
-</code></pre>
-<p>死锁必要条件及避免算法、</p>
-<pre><code>1、资源不能共享，只能由一个进程使用。
+</code></pre><p>死锁必要条件及避免算法、</p><pre><code>1、资源不能共享，只能由一个进程使用。
 2、请求与保持（Hold andwait）：已经得到资源的进程可以再次申请新的资源。
 3、不可剥夺（Nopre-emption）：已经分配的资源不能从相应的进程中被强制地剥夺。
 4、循环等待：系统中若干进程组成环路，该环路中每个进程都在等待相邻进程正占用的资源
 
 处理死锁的策略：1.忽略该问题。例如鸵鸟算法，该算法可以应用在极少发生死锁的的情况下。为什么叫鸵鸟算法呢，因为传说中鸵鸟看到危险就把头埋在地底下，可能鸵鸟觉得看不到危险也就没危险了吧。跟掩耳盗铃有点像。2.检测死锁并且恢复。3.仔细地对资源进行动态分配，以避免死锁。4.通过破除死锁四个必要条件之一，来防止死锁产生。）
-</code></pre>
-<p>动态链接和静态链接的区别、</p>
-<pre><code>动态链接是只建立一个引用的接口，而真正的代码和数据存放在另外的可执行模块中，在运行时再装入；而静态链接是把所有的代码和数据都复制到本模块中，运行时就不再需要库了。
-</code></pre>
-<p>c程序辨别系统是16位or32位,大端or小端字节序、</p>
-<p>16or32</p>
-<pre><code>法一：int k=~0;
+</code></pre><p>动态链接和静态链接的区别、</p><pre><code>动态链接是只建立一个引用的接口，而真正的代码和数据存放在另外的可执行模块中，在运行时再装入；而静态链接是把所有的代码和数据都复制到本模块中，运行时就不再需要库了。
+</code></pre><p>c程序辨别系统是16位or32位,大端or小端字节序、</p><p>16or32</p><pre><code>法一：int k=~0;
 
 if((unsigned int)k &gt;63356) cout&lt;&lt;&quot;at least 32bits&quot;&lt;&lt;endl;
 else cout&lt;&lt;&quot;16 bits&quot;&lt;&lt;endl;
@@ -705,9 +449,7 @@ int i=65536;
 cout&lt;&lt;i&lt;&lt;endl;
 int j=65535;
 cout&lt;&lt;j&lt;&lt;endl;
-</code></pre>
-<p>大or小</p>
-<pre><code>1) Little-Endian就是低位字节排放在内存的低地址端，高位字节排放在内存的高地址端。
+</code></pre><p>大or小</p><pre><code>1) Little-Endian就是低位字节排放在内存的低地址端，高位字节排放在内存的高地址端。
 2) Big-Endian就是高位字节排放在内存的低地址端，低位字节排放在内存的高地址端。
 举一个例子，比如数字0x12 34 56 78在内存中的表示形式为：
 
@@ -763,9 +505,7 @@ BOOL IsBigEndian()
 Big Endian : PowerPC、IBM、Sun
 Little Endian : x86、DEC
 ARM既可以工作在大端模式，也可以工作在小端模式。
-</code></pre>
-<p>常见的信号、系统如何将一个信号通知到进程、</p>
-<pre><code>信号机制是进程之间相互传递消息的一种方法，信号全称为软中断信号，也有人称作软中断。
+</code></pre><p>常见的信号、系统如何将一个信号通知到进程、</p><pre><code>信号机制是进程之间相互传递消息的一种方法，信号全称为软中断信号，也有人称作软中断。
 进程之间可以互相通过系统调用kill发送软中断信号。
 SIGHUP 1 A 终端挂起或者控制进程终止 
 SIGINT 2 A 键盘中断（如break键被按下） 
@@ -786,10 +526,7 @@ SIGPIPE 13 A 管道破裂: 写一个没有读端口的管道
 
 
 进程可以通过三种方式来响应一个信号：（1）忽略信号，即对信号不做任何处理，其中，有两个信号不能忽略：SIGKILL及SIGSTOP；（2）捕捉信号。定义信号处理函数，当信号发生时，执行相应的处理函数；（3）执行缺省操作，
-</code></pre>
-<p>linux系统的各类同步机制、linux系统的各类异步机制、</p>
-<p>如何实现守护进程</p>
-<pre><code>守护进程最重要的特性是后台运行。		
+</code></pre><p>linux系统的各类同步机制、linux系统的各类异步机制、</p><p>如何实现守护进程</p><pre><code>守护进程最重要的特性是后台运行。		
 
 1. 在后台运行。
 
@@ -832,9 +569,7 @@ for(i=0;i 关闭打开的文件描述符close(i);&gt;
 signal(SIGCHLD,SIG_IGN);
 
 这样，内核在子进程结束时不会产生僵尸进程。这一点与BSD4不同，BSD4下必须显式等待子进程结束才能释放僵尸进程。
-</code></pre>
-<p>标准库函数和系统调用的区别，</p>
-<pre><code>1、系统调用
+</code></pre><p>标准库函数和系统调用的区别，</p><pre><code>1、系统调用
 
 系统调用提供的函数如open, close, read, write, ioctl等，需包含头文件unistd.h。以write为例：其函数原型为 size_t write(int fd, const void *buf, size_t nbytes)，其操作对象为文件描述符或文件句柄fd(file descriptor)，要想写一个文件，必须先以可写权限用open系统调用打开一个文件，获得所打开文件的fd，例如fd=open(/&quot;/dev/video/&quot;, O_RDWR)。fd是一个整型值，每新打开一个文件，所获得的fd为当前最大fd加1。Linux系统默认分配了3个文件描述符值：0－standard input，1－standard output，2－standard error。
 
@@ -854,19 +589,13 @@ signal(SIGCHLD,SIG_IGN);
 库函数调用是系统无关的，因此可移植性好。
 
 由于库函数调用是基于C库的，因此也就不可能用于内核空间的驱动程序中对设备的操作
-</code></pre>
-<p>fd和PCB，</p>
-<p>32位系统一个进程最多有多少堆内存，</p>
-<p>五种I/O 模式，</p>
-<pre><code>五种I/O 模式：
+</code></pre><p>fd和PCB，</p><p>32位系统一个进程最多有多少堆内存，</p><p>五种I/O 模式，</p><pre><code>五种I/O 模式：
 【1】       阻塞I/O           (Linux下的I/O操作默认是阻塞I/O，即open和socket创建的I/O都是阻塞I/O)
 【2】       非阻塞 I/O        (可以通过fcntl或者open时使用O_NONBLOCK参数，将fd设置为非阻塞的I/O)
 【3】       I/O 多路复用     (I/O多路复用，通常需要非阻塞I/O配合使用)
 【4】       信号驱动 I/O    (SIGIO)
 【5】        异步 I/O
-</code></pre>
-<p>Apache 模型（Process Per Connection，简称PPC），TPC（ThreadPer Connection）模型，以及 select 模型和 poll 模型，epoll模型</p>
-<pre><code>一般来说，程序进行输入操作有两步：
+</code></pre><p>Apache 模型（Process Per Connection，简称PPC），TPC（ThreadPer Connection）模型，以及 select 模型和 poll 模型，epoll模型</p><pre><code>一般来说，程序进行输入操作有两步：
 1．等待有数据可以读
 2．将数据从系统内核中拷贝到程序的数据区。
 
@@ -1098,9 +827,7 @@ typedef union epoll_data &#123;
 &#125; epoll_data_t;
 
 可见epoll_data 是一个 union 结构体 , 借助于它应用程序可以保存很多类型的信息 :fd 、指针等等。有了它，应用程序就可以直接定位目标了。
-</code></pre>
-<p>socket服务端的实现，select和epoll的区别(必问)</p>
-<pre><code>select的本质是采用32个整数的32位，即32*32= 1024来标识，fd值为1-1024。当fd的值超过1024限制时，就必须修改FD_SETSIZE的大小。这个时候就可以标识32*max值范围的fd。
+</code></pre><p>socket服务端的实现，select和epoll的区别(必问)</p><pre><code>select的本质是采用32个整数的32位，即32*32= 1024来标识，fd值为1-1024。当fd的值超过1024限制时，就必须修改FD_SETSIZE的大小。这个时候就可以标识32*max值范围的fd。
 
 对于单进程多线程，每个线程处理多个fd的情况，select是不适合的。
 
@@ -1125,9 +852,7 @@ epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉�
 epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。
 
 另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。	
-</code></pre>
-<p>惊群现象，</p>
-<pre><code> 举一个很简单的例子，当你往一群鸽子中间扔一块食物，虽然最终只有一个鸽子抢到食物，但所有鸽子都会被惊动来争夺，没有抢到食物的鸽子只好回去继续睡觉，等待下一块食物到来。这样，每扔一块食物，都会惊动所有的鸽子，即为惊群。对于操作系统来说，多个进程/线程在等待同一资源是，也会产生类似的效果，其结果就是每当资源可用，所有的进程/线程都来竞争资源，造成的后果：
+</code></pre><p>惊群现象，</p><pre><code> 举一个很简单的例子，当你往一群鸽子中间扔一块食物，虽然最终只有一个鸽子抢到食物，但所有鸽子都会被惊动来争夺，没有抢到食物的鸽子只好回去继续睡觉，等待下一块食物到来。这样，每扔一块食物，都会惊动所有的鸽子，即为惊群。对于操作系统来说，多个进程/线程在等待同一资源是，也会产生类似的效果，其结果就是每当资源可用，所有的进程/线程都来竞争资源，造成的后果：
 1）系统对用户进程/线程频繁的做无效的调度、上下文切换，系统系能大打折扣。
 2）为了确保只有一个线程得到资源，用户必须对资源操作进行加锁保护，进一步加大了系统开销。
 
@@ -1140,18 +865,12 @@ epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_
     1）当一个等待队列入口有 WQ_FLAG_EXCLUSEVE 标志置位, 它被添加到等待队列的尾部. 没有这个标志的入口项, 相反, 添加到开始.
     2）当 wake_up 被在一个等待队列上调用时, 它在唤醒第一个有 WQ_FLAG_EXCLUSIVE 标志的进程后停止。
     也就是说，对于互斥等待的行为，比如如对一个listen后的socket描述符，多线程阻塞accept时，系统内核只会唤醒所有正在等待此时间的队列的第一个，队列中的其他人则继续等待下一次事件的发生，这样就避免的多个线程同时监听同一个socket描述符时的惊群问题。
-</code></pre>
-<p>块设备和字符设备有什么区别，</p>
-<pre><code>(1) 字符设备：提供连续的数据流，应用程序可以顺序读取，通常不支持随机存取。相反，此类设备支持按字节/字符来读写数据。举例来说，调制解调器是典型的字符设备。
+</code></pre><p>块设备和字符设备有什么区别，</p><pre><code>(1) 字符设备：提供连续的数据流，应用程序可以顺序读取，通常不支持随机存取。相反，此类设备支持按字节/字符来读写数据。举例来说，调制解调器是典型的字符设备。
 (2) 块设备：应用程序可以随机访问设备数据，程序可自行确定读取数据的位置。硬盘是典型的块设备，应用程序可以寻址磁盘上的任何位置，并由此读取数据。此外，数据的读写只能以块(通常是512B)的倍数进行。与字符设备不同，块设备并不支持基于字符的寻址。
 两种设备本身并没用严格的区分，主要是字符设备和块设备驱动程序提供的访问接口（file I/O API）是不一样的。本文主要就数据接口、访问接口和设备注册方法对两种设备进行比较。
-</code></pre>
-<p>用户态和内核态的区别</p>
-<pre><code>	虽然用户态下和内核态下工作的程序有很多差别，但最重要的差别就在于特权级的不同，即权力的不同。运行在用户态下的程序不能直接访问操作系统内核数据结构和程序，
+</code></pre><p>用户态和内核态的区别</p><pre><code>	虽然用户态下和内核态下工作的程序有很多差别，但最重要的差别就在于特权级的不同，即权力的不同。运行在用户态下的程序不能直接访问操作系统内核数据结构和程序，
 	当我们在系统中执行一个程序时，大部分时间是运行在用户态下的，在其需要操作系统帮助完成某些它没有权力和能力完成的工作时就会切换到内核态，
-</code></pre>
-<p>linux文件系统：inode，inode存储了哪些东西，目录名，文件名存在哪里</p>
-<pre><code>inode包含文件的元信息，具体来说有以下内容：
+</code></pre><p>linux文件系统：inode，inode存储了哪些东西，目录名，文件名存在哪里</p><pre><code>inode包含文件的元信息，具体来说有以下内容：
 　　* 文件的字节数
 　　* 文件拥有者的User ID
 　　* 文件的Group ID
@@ -1177,14 +896,9 @@ ln命令可以创建硬链接：ln 源文件 目标文件
 ln -s命令可以创建软链接。：ln -s 源文文件或目录 目标文件或目录
 
 http://www.ruanyifeng.com/blog/2011/12/inode.html
-</code></pre>
-<p>/proc存在哪里（存在内存上）</p>
-<pre><code>/proc 文件系统是一个虚拟文件系统，通过它可以使用一种新的方法在 Linux® 内核空间和用户空间之间进行通信。在 /proc 文件系统中，我们可以将对虚拟文件的读写作为与内核中实体进行通信的一种手段，但是与普通文件不同的是，这些虚拟文件的内容都是动态创建的
+</code></pre><p>/proc存在哪里（存在内存上）</p><pre><code>/proc 文件系统是一个虚拟文件系统，通过它可以使用一种新的方法在 Linux® 内核空间和用户空间之间进行通信。在 /proc 文件系统中，我们可以将对虚拟文件的读写作为与内核中实体进行通信的一种手段，但是与普通文件不同的是，这些虚拟文件的内容都是动态创建的
 http://www.ibm.com/developerworks/cn/linux/l-proc.html
-</code></pre>
-<h2 id="网络：">网络：</h2>
-<p>TCP和UDP区别、</p>
-<pre><code>key:TCP是一种面向连接的、可靠的、字节流服务
+</code></pre><h2 id="网络：">网络：</h2><p>TCP和UDP区别、</p><pre><code>key:TCP是一种面向连接的、可靠的、字节流服务
 
 1.面向链接：TCP面向链接，面向连接意味着两个使用TCP的应用（通常是一个客户和一个服务器）在彼此交换数据之前必须通过三次握手先建立一个TCP连接。在一个TCP中仅有两方彼此通信，多播和广播不能用于TCP。UDP是不可靠的传输，传输前不需要建立链接，可以应用多播和广播实现一对多的通信。
 
@@ -1202,11 +916,7 @@ http://www.ibm.com/developerworks/cn/linux/l-proc.html
 
  
 对于第三点的理解。TCP可能发送100个“包”，而接收到50个“包”，不是丢“包”了，而是每次接受的“包”都比发送的多，其实TCP并没有包的概念。例如，每次发10个字节，可能读得时候一次读了20个字节。TCP是一种流模式的协议，在接收到的缓存中按照发送的包得顺序自动按照顺序拼接好，因为数据基本来自同一个主机，而且是按照顺序发送过来的，TCP的缓存中存放的就是，连续的数据。感觉好像是多封装了一步比UDP。而UDP因为可能两个不同的主机，给同一个主机发送，（一个端口可能收到多个应用程序的数据），或者按照TCP那样合并数据，必然会造成数据错误。我觉得关键的原因还是，TCP是面向连接，而UDP是无连接的，这就导致，TCP接收的数据为一个主机发来且有序无误的，而UDP可能是多个主机发来的无序，可能错误的。
-</code></pre>
-<p>TCP和UDP头部字节定义，</p>
-<p>TCP和UDP三次握手和四次挥手状态及消息类型,</p>
-<p>time_wait，close_wait状态产生原因，keepalive，</p>
-<pre><code>TIME_WAIT：表示收到了对方的FIN报文，并发送出了ACK报文。 TIME_WAIT状态下的TCP连接会等待2*MSL（Max Segment Lifetime，最大分段生存期，指一个TCP报文在Internet上的最长生存时间。每个具体的TCP协议实现都必须选择一个确定的MSL值，RFC 1122建议是2分钟，但BSD传统实现采用了30秒，Linux可以cat /proc/sys/net/ipv4/tcp_fin_timeout看到本机的这个值），然后即可回到CLOSED 可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。
+</code></pre><p>TCP和UDP头部字节定义，</p><p>TCP和UDP三次握手和四次挥手状态及消息类型,</p><p>time_wait，close_wait状态产生原因，keepalive，</p><pre><code>TIME_WAIT：表示收到了对方的FIN报文，并发送出了ACK报文。 TIME_WAIT状态下的TCP连接会等待2*MSL（Max Segment Lifetime，最大分段生存期，指一个TCP报文在Internet上的最长生存时间。每个具体的TCP协议实现都必须选择一个确定的MSL值，RFC 1122建议是2分钟，但BSD传统实现采用了30秒，Linux可以cat /proc/sys/net/ipv4/tcp_fin_timeout看到本机的这个值），然后即可回到CLOSED 可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。
 
 如果使用了nginx代理，那么系统TIME_WAIT的数量会变得比较多，这是由于nginx代理使用了短链接的方式和后端交互的原因，使得nginx和后端的ESTABLISHED变得很少而TIME_WAIT很多。这不但发生在安装nginx的代理服务器上，而且也会使后端的app服务器上有大量的TIME_WAIT。查阅TIME_WAIT资料，发现这个状态很多也没什么大问题，但可能因为它占用了系统过多的端口，导致后续的请求无法获取端口而造成障碍。
 
@@ -1292,23 +1002,12 @@ TIME_WAIT 并不会占用很大资源的，除非受到攻击。
 还有，如果一方 send 或 recv 超时，就会直接进入 CLOSED 状态
 socket-faq中的这一段讲的也很好，摘录如下：
 2.7. Please explain the TIME_WAIT state.
-</code></pre>
-<p>什么是滑动窗口，超时重传，</p>
-<p>列举你所知道的tcp选项，</p>
-<p>connect会阻塞检测及防止，socket什么情况下可读？</p>
-<p>connect会阻塞，怎么解决?(必考必问)</p>
-<pre><code>最通常的方法最有效的是加定时器；也可以采用非阻塞模式。
+</code></pre><p>什么是滑动窗口，超时重传，</p><p>列举你所知道的tcp选项，</p><p>connect会阻塞检测及防止，socket什么情况下可读？</p><p>connect会阻塞，怎么解决?(必考必问)</p><pre><code>最通常的方法最有效的是加定时器；也可以采用非阻塞模式。
 
 设置非阻塞，返回之后用select检测状态)
-</code></pre>
-<p>如果select返回可读，结果只读到0字节，什么情况？</p>
-<pre><code>某个套接字集合中没有准备好，可能会select内存用FD_CLR清该位为0；
-</code></pre>
-<p>socket什么情况下可读？</p>
-<pre><code>每次读操作返回前都要检查是否还有剩余数据没读完，如果是的话保持数据有效标志，不这样设计的话会出现明显的不一致，那就是数据在读缓冲但没有读有效标志。
-</code></pre>
-<p>keepalive是什么东东？如何使用？</p>
-<pre><code>设置Keepalive参数，检测已中断的客户连接
+</code></pre><p>如果select返回可读，结果只读到0字节，什么情况？</p><pre><code>某个套接字集合中没有准备好，可能会select内存用FD_CLR清该位为0；
+</code></pre><p>socket什么情况下可读？</p><pre><code>每次读操作返回前都要检查是否还有剩余数据没读完，如果是的话保持数据有效标志，不这样设计的话会出现明显的不一致，那就是数据在读缓冲但没有读有效标志。
+</code></pre><p>keepalive是什么东东？如何使用？</p><pre><code>设置Keepalive参数，检测已中断的客户连接
 在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
 
 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
@@ -1320,28 +1019,10 @@ socket-faq中的这一段讲的也很好，摘录如下：
 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认
 
 的二个小时。
-</code></pre>
-<p>UDP中使用connect的好处:</p>
-<pre><code>1:会提升效率.前面已经描述了.2:高并发服务中会增加系统稳定性.原因:假设client A 通过非connect的UDP与serverB,C通信.B,C提供相同服务.为了负载均衡,我们让A与B,C交替通信.A 与 B通信IPa:PORTa&lt;----&gt; IPb:PORTbA 与 C通信IPa:PORTa'&lt;----&gt;IPc:PORTc 
+</code></pre><p>UDP中使用connect的好处:</p><pre><code>1:会提升效率.前面已经描述了.2:高并发服务中会增加系统稳定性.原因:假设client A 通过非connect的UDP与serverB,C通信.B,C提供相同服务.为了负载均衡,我们让A与B,C交替通信.A 与 B通信IPa:PORTa&lt;----&gt; IPb:PORTbA 与 C通信IPa:PORTa'&lt;----&gt;IPc:PORTc 
 假设PORTa 与 PORTa'相同了(在大并发情况下会发生这种情况),那么就有可能出现A等待B的报文,却收到了C的报文.导致收报错误.解决方法内就是采用connect的UDP通信方式.在A中创建两个udp,然后分别connect到B,C.
-</code></pre>
-<p>长连接和短连接,</p>
-<p>DNS和HTTP协议，HTTP请求方式，</p>
-<p>cookie,session,localstroage,</p>
-<p>一致性哈希负载均衡，</p>
-<p>描述在浏览器中敲入一个网址并按下回车后所发生的事情，</p>
-<p>PING命令</p>
-<pre><code>ping命令所利用的原理是这样的:网络上的机器都有唯一确定的IP地址，我们给目标IP地址发送一个数据包，对方就要返回一个同样大小的数据包，根据返回的数据包我们可以确定目标主机的存在，可以初步判断目标主机的操作系统等。
-</code></pre>
-<h2 id="数据库：">数据库：</h2>
-<p>谈谈你对数据库中索引的理解，索引和主键区别</p>
-<ul>
-<li>
-<p>聚集索引一个表只能有一个，而非聚集索引一个表可以存在多个。</p>
-</li>
-<li>
-<p>聚集索引存储记录是物理上连续存在，而非聚集索引是逻辑上的连续，物理存储并不连续。</p>
-<pre><code>  聚集索引：该索引中键值的逻辑顺序决定了表中相应行的物理顺序。
+</code></pre><p>长连接和短连接,</p><p>DNS和HTTP协议，HTTP请求方式，</p><p>cookie,session,localstroage,</p><p>一致性哈希负载均衡，</p><p>描述在浏览器中敲入一个网址并按下回车后所发生的事情，</p><p>PING命令</p><pre><code>ping命令所利用的原理是这样的:网络上的机器都有唯一确定的IP地址，我们给目标IP地址发送一个数据包，对方就要返回一个同样大小的数据包，根据返回的数据包我们可以确定目标主机的存在，可以初步判断目标主机的操作系统等。
+</code></pre><h2 id="数据库：">数据库：</h2><p>谈谈你对数据库中索引的理解，索引和主键区别</p><ul><li><p>聚集索引一个表只能有一个，而非聚集索引一个表可以存在多个。</p></li><li><p>聚集索引存储记录是物理上连续存在，而非聚集索引是逻辑上的连续，物理存储并不连续。</p><pre><code>  聚集索引：该索引中键值的逻辑顺序决定了表中相应行的物理顺序。
   聚集索引确定表中数据的物理顺序。聚集索引类似于电话簿，后者按姓氏排列数据。由于聚集索引规定数据在表中的物理存储顺序，因此一个表只能包含一个聚集索引。但该索引可以包含多个列（组合索引），就像电话簿按姓氏和名字进行组织一样。
        聚集索引使用注意事项
 
@@ -1379,15 +1060,9 @@ socket-faq中的这一段讲的也很好，摘录如下：
   索引是通过二叉树的形式进行描述的，我们可以这样区分聚集与非聚集索引的区别：聚集索引的叶节点就是最终的数据节点，而非聚集索引的叶节仍然是索引节点，但它有一个指向最终数据的指针。
   第五：在主键是创建聚集索引的表在数据插入上为什么比主键上创建非聚集索引表速度要慢？
   有了上面第四点的认识，我们分析这个问题就有把握了，在有主键的表中插入数据行，由于有主键唯一性的约束，所以需要保证插入的数据没有重复。我们来比较下主键为聚集索引和非聚集索引的查找情况:聚集索引由于索引叶节点就是数据页，所以如果想检查主键的唯一性，需要遍历所有数据节点才行，但非聚集索引不同，由于非聚集索引上已经包含了主键值，所以查找主键唯一性，只需要遍历所有的索引页就行，这比遍历所有数据行减少了不少IO消耗。这就是为什么主键上创建非聚集索引比主键上创建聚集索引在插入数据时要快的真正原因。
-</code></pre>
-</li>
-</ul>
-<p>现在普通关系数据库用得数据结构是什么类型的数据结构，</p>
-<pre><code>B+树
+</code></pre></li></ul><p>现在普通关系数据库用得数据结构是什么类型的数据结构，</p><pre><code>B+树
 [MySQL索引背后的数据结构及算法原理](http://blog.codinglabs.org/articles/theory-of-mysql-index.html)
-</code></pre>
-<p>索引的优点和缺点，</p>
-<pre><code>建立索引的优点
+</code></pre><p>索引的优点和缺点，</p><pre><code>建立索引的优点
 1.大大加快数据的检索速度;
 2.创建唯一性索引，保证数据库表中每一行数据的唯一性;
 3.加速表和表之间的连接;
@@ -1408,9 +1083,7 @@ socket-faq中的这一段讲的也很好，摘录如下：
 聚集索引
 在聚集索引中，表中行的物理顺序与键值的逻辑（索引）顺序相同。一个表只能包含一个聚集索引。
 如果某索引不是聚集索引，则表中行的物理顺序与键值的逻辑顺序不匹配。与非聚集索引相比，聚集索引通常提供更快的数据访问速度。 
-</code></pre>
-<p>关系型数据库和非关系数据库的特点，</p>
-<pre><code>简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
+</code></pre><p>关系型数据库和非关系数据库的特点，</p><pre><code>简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
 
 非关系型数据库提出另一种理念，例如，以键值对存储，且结构不固定，每一个元组可以有不一样的字段，每个元组可以根据需要增加一些自己的键值对，这 样就不会局限于固定的结构，可以减少一些时间和空间的开销。使用这种方式，用户可以根据需要去添加自己需要的字段，这样，为了获取用户的不同信息，不需要 像关系型数据库中，要对多表进行关联查询。仅需要根据id取出相应的value就可以完成查询。但非关系型数据库由于很少的约束，他也不能够提供像SQL 所提供的where这种对于字段属性值情况的查询。并且难以体现设计的完整性。他只适合存储一些较为简单的数据，对于需要进行较复杂查询的数据，SQL数 据库显的更为合适。
 
@@ -1441,10 +1114,7 @@ key-value数据库的主要特点即使具有极高的并发读写性能，Redis
 面向可扩展性的分布式数据库：
 
 这类数据库想解决的问题就是传统数据库存在可扩展性上的缺陷，这类数据库可以适应数据量的增加以及数据结构的变化
-</code></pre>
-<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://my.oschina.net/u/1773689/blog/364548">关系型数据库和非关系型数据库</a></p>
-<p>乐观锁与悲观锁的区别，</p>
-<pre><code>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作。[1]      悲观锁假定其他用户企图访问或者改变你正在访问、更改的对象的概率是很高的，因此在悲观锁的环境中，在你开始改变此对象之前就将该对象锁住，并且直到你提交了所作的更改之后才释放锁。悲观的缺陷是不论是页锁还是行锁，加锁的时间可能会很长，这样可能会长时间的限制其他用户的访问，也就是说悲观锁的并发访问性不好。
+</code></pre><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://my.oschina.net/u/1773689/blog/364548">关系型数据库和非关系型数据库</a></p><p>乐观锁与悲观锁的区别，</p><pre><code>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作。[1]      悲观锁假定其他用户企图访问或者改变你正在访问、更改的对象的概率是很高的，因此在悲观锁的环境中，在你开始改变此对象之前就将该对象锁住，并且直到你提交了所作的更改之后才释放锁。悲观的缺陷是不论是页锁还是行锁，加锁的时间可能会很长，这样可能会长时间的限制其他用户的访问，也就是说悲观锁的并发访问性不好。
 
 乐观锁：假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。[1] 乐观锁不能解决脏读的问题。    乐观锁则认为其他用户企图改变你正在更改的对象的概率是很小的，因此乐观锁直到你准备提交所作的更改时才将对象锁住，当你读取以及改变该对象时并不加锁。可见乐观锁加锁的时间要比悲观锁短，乐观锁可以用较大的锁粒度获得较好的并发访问性能。但是如果第二个用户恰好在第一个用户提交更改之前读取了该对象，那么当他完成了自己的更改进行提交时，数据库就会发现该对象已经变化了，这样，第二个用户不得不重新读取该对象并作出更改。这说明在乐观锁环境中，会增加并发用户读取对象的次数。
 
@@ -1453,30 +1123,20 @@ key-value数据库的主要特点即使具有极高的并发读写性能，Redis
 
 
 [乐观锁与悲观锁的区别](http://www.cnblogs.com/Bob-FD/p/3352216.html)
-</code></pre>
-<p>数据库范式</p>
-<pre><code>1NF的定义为：符合1NF的关系中的每个属性都不可再分,1NF是所有关系型数据库的最基本要求，
+</code></pre><p>数据库范式</p><pre><code>1NF的定义为：符合1NF的关系中的每个属性都不可再分,1NF是所有关系型数据库的最基本要求，
 2NF在1NF的基础之上，消除了非主属性对于码的部分函数依赖。
 3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖。也就是说， 如果存在非主属性对于码的传递函数依赖，则不符合3NF的要求。
 BCNF范式在 3NF 的基础上消除主属性对于码的部分与传递函数依赖。
-</code></pre>
-<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.zhihu.com/question/24696366">解释一下关系数据库的第一第二第三范式？</a></p>
-<p>数据库日志类型作用</p>
-<pre><code>MySQL日志文件分类
+</code></pre><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.zhihu.com/question/24696366">解释一下关系数据库的第一第二第三范式？</a></p><p>数据库日志类型作用</p><pre><code>MySQL日志文件分类
 1.错误日志(Error Log)
 2.二进制日志(Binary Log &amp; Binary Log Index)
 3.通用查询日志(query log)
 4.慢查询日志(slow query log)
 5.Innodb的在线 redo 日志(innodb redo log)
 6.更新日志(update log)
-</code></pre>
-<p>innodb和myisam的区别</p>
-<pre><code>innodb，聚集索引，支持外键和事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))，不支持全文索引，不支持计数，统计的时候会遍历，
+</code></pre><p>innodb和myisam的区别</p><pre><code>innodb，聚集索引，支持外键和事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))，不支持全文索引，不支持计数，统计的时候会遍历，
 myisam，非聚集索引，不支持外键事务，支持全文索引，支持计数，查询效果较好
-</code></pre>
-<p>你对innodb哪里最熟悉</p>
-<p>innodb的索引有哪几种类型</p>
-<pre><code>4种，hash，b-tree，spatial，full-text
+</code></pre><p>你对innodb哪里最熟悉</p><p>innodb的索引有哪几种类型</p><pre><code>4种，hash，b-tree，spatial，full-text
 1. B-Tree索引
 
 最常见的索引类型，基于B-Tree数据结构。B-Tree的基本思想是，所有值（被索引的列）都是排过序的，每个叶节点到跟节点距离相等。所以B-Tree适合用来查找某一范围内的数据，而且可以直接支持数据排序（ORDER BY）。但是当索引多列时，列的顺序特别重要，需要格外注意。InnoDB和MyISAM都支持B-Tree索引。InnoDB用的是一个变种B+Tree，而MyISAM为了节省空间对索引进行了压缩，从而牺牲了性能。
@@ -1501,13 +1161,8 @@ CREATE TABLE testhash (
 主要用来查找文本中的关键字，而不是直接与索引中的值相比较。Full-text索引跟其它索引大不相同，它更像是一个搜索引擎，而不是简单的WHERE语句的参数匹配。你可以对某列分别进行full-text索引和B-Tree索引，两者互不冲突。Full-text索引配合MATCH AGAINST操作使用，而不是一般的WHERE语句加LIKE。
 
 http://segmentfault.com/q/1010000003832312
-</code></pre>
-<p>B TREE 和B+TREE的区别</p>
-<p>innodb有全文索引吗</p>
-<pre><code>没有，myisam有
-</code></pre>
-<p>union和join</p>
-<pre><code>JOIN用于按照ON条件联接两个表，主要有四种：
+</code></pre><p>B TREE 和B+TREE的区别</p><p>innodb有全文索引吗</p><pre><code>没有，myisam有
+</code></pre><p>union和join</p><pre><code>JOIN用于按照ON条件联接两个表，主要有四种：
 
 INNER JOIN：内部联接两个表中的记录，仅当至少有一个同属于两表的行符合联接条件时，内联接才返回行。我理解的是只要记录不符合ON条件，就不会显示在结果集内。
 
@@ -1533,30 +1188,13 @@ UNION运算符
 
 http://chengheng1984.blog.163.com/blog/static/17947412201012215738844/
 http://www.51testing.com/html/14/446214-249265.html
-</code></pre>
-<h2 id="海量数据处理：">海量数据处理：</h2>
-<p>bitmap</p>
-<p>Map-Reduce原理，</p>
-<p>BloomFilter原理、</p>
-<pre><code>它实际上是一个很长的二进制向量和一系列随机映射函数（Hash函数）。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。Bloom Filter广泛的应用于各种需要查询的场合中，如Orocle的数据库，Google的BitTable也用了此技术。
+</code></pre><h2 id="海量数据处理：">海量数据处理：</h2><p>bitmap</p><p>Map-Reduce原理，</p><p>BloomFilter原理、</p><pre><code>它实际上是一个很长的二进制向量和一系列随机映射函数（Hash函数）。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。Bloom Filter广泛的应用于各种需要查询的场合中，如Orocle的数据库，Google的BitTable也用了此技术。
 
 Bloom Filter特点：
 不存在漏报（False Negative），即某个元素在某个集合中，肯定能报出来。
 可能存在误报（False Positive），即某个元素不在某个集合中，可能也被爆出来。
 确定某个元素是否在某个集合中的代价和总的元素数目无关。
-</code></pre>
-<p>Trie树原理、<br>
-单词搜索树</p>
-<p>B+树原理，</p>
-<p>LSM树原理,</p>
-<p>大数据处理</p>
-<h2 id="工具：">工具：</h2>
-<p>编译工具GCC，调试工具GDB，性能优化工具Perf,内存泄露检查工具Valgrind,makefile编写<br>
-其他工具: netstat,ps,top,df,fdisk,lsof，ifconfig,uname,kill，tcpdump，ipcs，grep</p>
-<h2 id="其他：安全，加密方式（DES，SHA）">其他：安全，加密方式（DES，SHA）</h2>
-<p>附：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/programmer_editor/article/details/4004408">软件开发者面试百问</a></p>
-<h1>相关书籍</h1>
-<pre><code>语言类：
+</code></pre><p>Trie树原理、<br>单词搜索树</p><p>B+树原理，</p><p>LSM树原理,</p><p>大数据处理</p><h2 id="工具：">工具：</h2><p>编译工具GCC，调试工具GDB，性能优化工具Perf,内存泄露检查工具Valgrind,makefile编写<br>其他工具: netstat,ps,top,df,fdisk,lsof，ifconfig,uname,kill，tcpdump，ipcs，grep</p><h2 id="其他：安全，加密方式（DES，SHA）">其他：安全，加密方式（DES，SHA）</h2><p>附：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://blog.csdn.net/programmer_editor/article/details/4004408">软件开发者面试百问</a></p><h1>相关书籍</h1><pre><code>语言类：
 C:C程序设计语言（K&amp;R）-&gt;C和指针-&gt;C专家编程-&gt;C陷阱与缺陷-&gt;你必须知道的495个C语言问题
 C++: C++ primer -&gt; effective C++-&gt;深度探索C++对象模型 -&gt;stl源码分析-&gt;C++必知必会
 java：java编程思想-&gt;java并发编程-&gt;深入理解Java虚拟机：JVM高级特性与最佳实践
@@ -1585,9 +1223,7 @@ unix编程艺术(进阶)
 重构，
 编写可读代码的艺术，
 headfirst设计模式
-</code></pre>
-<h1>相关网络资源</h1>
-<pre><code>Coolshell：http://coolshell.cn/
+</code></pre><h1>相关网络资源</h1><pre><code>Coolshell：http://coolshell.cn/
 Matrix67大牛的博客：http://www.matrix67.com/blog/。
 July的CSDN博客：http://blog.csdn.net/v_JULY_v。
 何海涛博客：http://zhedahht.blog.163.com/。
@@ -1596,251 +1232,4 @@ http://hawstein.com/posts/ctci-solutions-contents.html
 LeetCode：http://leetcode.com/
 这里有不少笔试题集锦：http://blog.csdn.net/hackbuteer1
 程序员编程艺术：面试和算法心得http://taop.marchtea.com/
-</code></pre>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">lws</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lwscode.cn/12/">https://lwscode.cn/12/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lwscode.cn" target="_blank">lwscode</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/9/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/226/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Cloud</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">lws</div><div class="author-info__description">This is my blog.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lws597"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lws597" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lwscode@163.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">后端开发面试题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">后端开发面试知识点大纲：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%B1%BB%EF%BC%88C-%EF%BC%89%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">语言类（C++）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E4%BD%9C%E7%94%A8%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">关键字作用解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%93%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">库函数实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STL%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">2.1.3.</span> <span class="toc-text">STL原理及实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">2.1.4.</span> <span class="toc-text">虚函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-number">2.1.5.</span> <span class="toc-text">设计模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%EF%BC%9A"><span class="toc-number">2.1.6.</span> <span class="toc-text">内存分配：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%EF%BC%9A"><span class="toc-number">2.1.7.</span> <span class="toc-text">指针：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">数据结构算法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">操作系统：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">网络：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">数据库：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">海量数据处理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%EF%BC%9A"><span class="toc-number">2.7.</span> <span class="toc-text">工具：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%EF%BC%9A%E5%AE%89%E5%85%A8%EF%BC%8C%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%88DES%EF%BC%8CSHA%EF%BC%89"><span class="toc-number">2.8.</span> <span class="toc-text">其他：安全，加密方式（DES，SHA）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">相关书籍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">相关网络资源</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/25/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/25/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.435Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/22/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/22/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.435Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/17/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/17/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.434Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/20/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/20/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.434Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/24/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/24/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.434Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By lws</div><div class="footer_custom_text"><p>Hi, welcome to my <a href="https://lwscode.cn">blog</a>!</p> <p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"><span>鄂ICP备2021002665号</span></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
-
-function panguInit () {
-  if (false){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
-
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
-  function initWaline () {
-    const waline = new Waline(Object.assign({
-      el: '#waline-wrap',
-      serverURL: 'https://lwscode.vercel.app',
-      avatar: 'monsterid',
-      path: location.pathname,
-      emojiCDN: '',
-      emojiMaps: "",
-      visitor: false
-    }, null))
-  }
-
-  if (typeof Waline === 'function') initWaline() 
-  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
-}
-
-if ('Waline' === 'Waline' || !false) {
-  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
-  else setTimeout(loadWaline, 0)
-} else {
-  function loadOtherComment () {
-    loadWaline()
-  }
-}</script></div><script>window.addEventListener('load', () => {
-  const changeContent = (content) => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g,"") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0,150) + '...'
-    }
-    return content
-  }
-
-  const getIcon = (avatar,mail) => {
-    if (avatar) return avatar
-    let defaultIcon = '?d=monsterid'
-    let iconUrl = `https://gravatar.loli.net/avatar/${mail + defaultIcon}`
-    return iconUrl
-  }
-
-  const generateHtml = array => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class=\'aside-list-item\'>'
-
-        if (true) {
-          const name = 'src'
-          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
-        }
-
-        result += `<div class='content'>
-        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
-        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '没有评论'
-    }
-
-    let $dom = document.querySelector('#card-newest-comments .aside-list')
-    $dom.innerHTML= result
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh($dom)
-  }
-
-  const getComment = () => {
-    const loadWaline = () => {
-      Waline.Widget.RecentComments({
-        el: '#card-newest-comments .aside-list',
-        serverURL: 'https://lwscode.vercel.app',
-        count: 6
-      }).then(comments => {
-        const walineArray = comments.map(function (e) {
-          return {
-            'content': changeContent(e.comment),
-            'avatar': getIcon(e.QQAvatar,e.mail),
-            'nick': e.nick,
-            'url': e.url + '#' + e.objectId,
-            'date': e.updatedAt,
-          }
-        })
-        saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
-        generateHtml(walineArray)
-      }).catch(e => {
-        const $dom = document.querySelector('#card-newest-comments .aside-list')
-        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
-      }) 
-    }
-
-    if (typeof Waline === 'function') loadWaline() 
-    else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(loadWaline)
-  }
-
-  const newestCommentInit = () => {
-    if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('waline-newest-comments')
-      if (data) {
-        generateHtml(JSON.parse(data))
-      } else {
-        getComment()
-      }
-    }
-  }
-
-  newestCommentInit()
-  document.addEventListener('pjax:complete', newestCommentInit)
-})</script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 網站已更新最新版本 👉</label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">點擊刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"點擊刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>((window.gitter = {}).chat = {}).options = {
-  disableDefaultChat: true,
-};
-document.addEventListener('gitter-sidecar-ready', (e) => {
-  const GitterChat = e.detail.Chat
-  let chat
-
-  function initGitter () {
-    chat = new GitterChat({
-      room: 'lwscode/community',
-      activationElement: '#chat_btn'
-    });
-  }
-
-  initGitter()
-
-  if (true) {
-    document.addEventListener('pjax:complete', () => {
-      chat.destroy()
-      initGitter()
-    })
-  }
-
-})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
-  'title',
-  '#config-diff',
-  '#body-wrap',
-  '#rightside-config-hide',
-  '#rightside-config-show',
-  '.js-pjax'
-]
-
-if (false) {
-  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
-}
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
-
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // Analytics
-  if (false) {
-    MtaH5.pgv()
-  }
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-
-  typeof preloader === 'object' && preloader.endLoading()
-})
-
-
-document.addEventListener('pjax:send', function () {
-  typeof preloader === 'object' && preloader.initLoading()
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-})
-
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</code></pre></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">lws</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lwscode.cn/12/">https://lwscode.cn/12/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lwscode.cn" target="_blank">lwscode</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/9/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='onerror=null,src="/img/404.jpg"' alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/226/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='onerror=null,src="/img/404.jpg"' alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Cloud</div></div></a></div></nav><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"><div class="author-info__name">lws</div><div class="author-info__description">This is my blog.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lws597"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lws597" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lwscode@163.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">后端开发面试题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">后端开发面试知识点大纲：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%B1%BB%EF%BC%88C-%EF%BC%89%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">语言类（C++）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E4%BD%9C%E7%94%A8%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">关键字作用解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%93%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">库函数实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STL%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">2.1.3.</span> <span class="toc-text">STL原理及实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">2.1.4.</span> <span class="toc-text">虚函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-number">2.1.5.</span> <span class="toc-text">设计模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%EF%BC%9A"><span class="toc-number">2.1.6.</span> <span class="toc-text">内存分配：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%EF%BC%9A"><span class="toc-number">2.1.7.</span> <span class="toc-text">指针：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">数据结构算法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">操作系统：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">网络：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">数据库：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">海量数据处理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%EF%BC%9A"><span class="toc-number">2.7.</span> <span class="toc-text">工具：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%EF%BC%9A%E5%AE%89%E5%85%A8%EF%BC%8C%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%88DES%EF%BC%8CSHA%EF%BC%89"><span class="toc-number">2.8.</span> <span class="toc-text">其他：安全，加密方式（DES，SHA）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">相关书籍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">相关网络资源</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/22/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="无题"></a><div class="content"><a class="title" href="/22/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.435Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/25/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="无题"></a><div class="content"><a class="title" href="/25/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.435Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/17/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="无题"></a><div class="content"><a class="title" href="/17/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.434Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/20/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="无题"></a><div class="content"><a class="title" href="/20/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.434Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/26/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="无题"></a><div class="content"><a class="title" href="/26/" title="无题">无题</a><time datetime="2021-04-14T13:07:18.434Z" title="发表于 2021-04-14 21:07:18">2021-04-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image:url(https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By lws</div><div class="footer_custom_text"><p>Hi, welcome to my <a href="https://lwscode.cn">blog</a>!</p><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"><span>鄂ICP备2021002665号</span></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn(){"object"==typeof pangu?pangu.autoSpacingPage():getScript("https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js").then(()=>{pangu.autoSpacingPage()})}function panguInit(){panguFn()}document.addEventListener("DOMContentLoaded",panguInit)</script><script src="/js/search/algolia.js"></script><script>var preloader={endLoading:()=>{document.body.style.overflow="auto",document.getElementById("loading-box").classList.add("loaded")},initLoading:()=>{document.body.style.overflow="",document.getElementById("loading-box").classList.remove("loaded")}};window.addEventListener("load",preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline(){function e(){new Waline(Object.assign({el:"#waline-wrap",serverURL:"https://lwscode.vercel.app",avatar:"monsterid",path:location.pathname,emojiCDN:"",emojiMaps:"",visitor:!1},null))}"function"==typeof Waline?e():getScript("https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js").then(e)}{function loadOtherComment(){loadWaline()}setTimeout(loadWaline,0)}</script></div><script>window.addEventListener("load",()=>{const e=(e,t)=>{if(e)return e;return"https://gravatar.loli.net/avatar/"+(t+"?d=monsterid")},t=e=>{let t="";if(e.length)for(let n=0;n<e.length;n++){t+="<div class='aside-list-item'>";{const a="src";t+=`<a href='${e[n].url}' class='thumbnail'><img ${a}='${e[n].avatar}' alt='${e[n].nick}'></a>`}t+=`<div class='content'>\n        <a class='comment' href='${e[n].url}'>${e[n].content}</a>\n        <div class='name'><span>${e[n].nick} / </span><time datetime="${e[n].date}">${btf.diffDate(e[n].date,!0)}</time></div>\n        </div></div>`}else t+="没有评论";let n=document.querySelector("#card-newest-comments .aside-list");n.innerHTML=t,window.lazyLoadInstance&&window.lazyLoadInstance.update(),window.pjax&&window.pjax.refresh(n)},n=()=>{if(document.querySelector("#card-newest-comments .aside-list")){const n=saveToLocal.get("waline-newest-comments");n?t(JSON.parse(n)):(()=>{const n=()=>{Waline.Widget.RecentComments({el:"#card-newest-comments .aside-list",serverURL:"https://lwscode.vercel.app",count:6}).then(n=>{const a=n.map((function(t){return{content:(n=t.comment,""===n||(n=(n=(n=(n=n.replace(/<img.*?src="(.*?)"?[^\>]+>/gi,"[图片]")).replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi,"[链接]")).replace(/<pre><code>.*?<\/pre>/gi,"[代码]")).replace(/<[^>]+>/g,"")).length>150&&(n=n.substring(0,150)+"..."),n),avatar:e(t.QQAvatar,t.mail),nick:t.nick,url:t.url+"#"+t.objectId,date:t.updatedAt};var n}));saveToLocal.set("waline-newest-comments",JSON.stringify(a),10/1440),t(a)}).catch(e=>{document.querySelector("#card-newest-comments .aside-list").innerHTML="无法获取评论，请确认相关配置是否正确"})};"function"==typeof Waline?n():getScript("https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js").then(n)})()}};n(),document.addEventListener("pjax:complete",n)})</script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listfolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><div class="app-refresh" id="app-refresh"><div class="app-refresh-wrap"><label>✨ 網站已更新最新版本 👉</label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">點擊刷新</a></div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"點擊刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",(function(){showNotification()})),window.addEventListener("load",(function(){navigator.serviceWorker.register("/sw.js")})))</script><script id="canvas_nest" defer color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async mobile="false"></script><script>((window.gitter={}).chat={}).options={disableDefaultChat:!0},document.addEventListener("gitter-sidecar-ready",t=>{const e=t.detail.Chat;let n;function a(){n=new e({room:"lwscode/community",activationElement:"#chat_btn"})}a(),document.addEventListener("pjax:complete",()=>{n.destroy(),a()})})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors=["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"];var pjax=new Pjax({elements:'a:not([target="_blank"])',selectors:pjaxSelectors,cacheBust:!1,analytics:!1,scrollRestoration:!1});document.addEventListener("pjax:complete",(function(){window.refreshFn(),document.querySelectorAll("script[data-pjax]").forEach(e=>{const t=document.createElement("script"),o=e.text||e.textContent||e.innerHTML||"";Array.from(e.attributes).forEach(e=>t.setAttribute(e.name,e.value)),t.appendChild(document.createTextNode(o)),e.parentNode.replaceChild(t,e)}),GLOBAL_CONFIG.islazyload&&window.lazyLoadInstance.update(),"function"==typeof chatBtnFn&&chatBtnFn(),"function"==typeof panguInit&&panguInit(),"function"==typeof gtag&&gtag("config","",{page_path:window.location.pathname}),"object"==typeof _hmt&&_hmt.push(["_trackPageview",window.location.pathname]),"function"==typeof loadMeting&&document.getElementsByClassName("aplayer").length&&loadMeting(),"object"==typeof Prism&&Prism.highlightAll(),"object"==typeof preloader&&preloader.endLoading()})),document.addEventListener("pjax:send",(function(){if("object"==typeof preloader&&preloader.initLoading(),window.aplayers)for(let e=0;e<window.aplayers.length;e++)window.aplayers[e].options.fixed||window.aplayers[e].destroy();"object"==typeof typed&&typed.destroy();const e=document.body.classList;e.contains("read-mode")&&e.remove("read-mode")})),document.addEventListener("pjax:error",e=>{404===e.request.status&&pjax.loadUrl("/404.html")})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
