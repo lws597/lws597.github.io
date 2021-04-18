@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lwscode.cn/categories/</loc>
+    
+    <lastmod>2021-04-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lwscode.cn/tags/</loc>
+    
+    <lastmod>2021-04-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lwscode.cn/27/</loc>
     
     <lastmod>2021-04-18</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>https://lwscode.cn/pwa/manifest.json</loc>
-    
-    <lastmod>2021-04-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lwscode.cn/manifest.json</loc>
     
     <lastmod>2021-04-17</lastmod>
     
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://lwscode.cn/20/</loc>
+    <loc>https://lwscode.cn/19/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lwscode.cn/19/</loc>
+    <loc>https://lwscode.cn/20/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
@@ -72,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://lwscode.cn/15/</loc>
-    
-    <lastmod>2021-04-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lwscode.cn/16/</loc>
     
     <lastmod>2021-04-16</lastmod>
@@ -86,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://lwscode.cn/18/</loc>
+    <loc>https://lwscode.cn/15/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
@@ -100,6 +100,13 @@
   </url>
   
   <url>
+    <loc>https://lwscode.cn/18/</loc>
+    
+    <lastmod>2021-04-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lwscode.cn/11/</loc>
     
     <lastmod>2021-04-16</lastmod>
@@ -107,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://lwscode.cn/12/</loc>
+    <loc>https://lwscode.cn/14/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lwscode.cn/14/</loc>
+    <loc>https://lwscode.cn/12/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
@@ -135,7 +142,7 @@
   </url>
   
   <url>
-    <loc>https://lwscode.cn/9/</loc>
+    <loc>https://lwscode.cn/6/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
@@ -149,7 +156,14 @@
   </url>
   
   <url>
-    <loc>https://lwscode.cn/6/</loc>
+    <loc>https://lwscode.cn/9/</loc>
+    
+    <lastmod>2021-04-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lwscode.cn/2/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
@@ -171,13 +185,6 @@
   
   <url>
     <loc>https://lwscode.cn/4/</loc>
-    
-    <lastmod>2021-04-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lwscode.cn/2/</loc>
     
     <lastmod>2021-04-16</lastmod>
     
