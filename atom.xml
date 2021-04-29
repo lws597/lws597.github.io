@@ -3,11 +3,11 @@
   <title>lwscode</title>
   
   <subtitle>lws&#39; blog</subtitle>
-  <link href="https://lwscode.cn/atom.xml" rel="self"/>
+  <link href="https://lwscode.com/atom.xml" rel="self"/>
   
-  <link href="https://lwscode.cn/"/>
+  <link href="https://lwscode.com/"/>
   <updated>2021-04-26T11:20:15.854Z</updated>
-  <id>https://lwscode.cn/</id>
+  <id>https://lwscode.com/</id>
   
   <author>
     <name>lws</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Javascript学习note</title>
-    <link href="https://lwscode.cn/p/1579/"/>
-    <id>https://lwscode.cn/p/1579/</id>
+    <link href="https://lwscode.com/p/1579/"/>
+    <id>https://lwscode.com/p/1579/</id>
     <published>2021-04-26T08:40:26.000Z</published>
     <updated>2021-04-26T11:20:15.854Z</updated>
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>Wps实习四个月后</title>
-    <link href="https://lwscode.cn/p/3770/"/>
-    <id>https://lwscode.cn/p/3770/</id>
+    <link href="https://lwscode.com/p/3770/"/>
+    <id>https://lwscode.com/p/3770/</id>
     <published>2021-04-22T07:55:36.000Z</published>
     <updated>2021-04-26T11:15:10.712Z</updated>
     
@@ -63,8 +63,8 @@
   
   <entry>
     <title>Vim查找&amp;替换</title>
-    <link href="https://lwscode.cn/p/5304/"/>
-    <id>https://lwscode.cn/p/5304/</id>
+    <link href="https://lwscode.com/p/5304/"/>
+    <id>https://lwscode.com/p/5304/</id>
     <published>2021-04-20T03:09:18.000Z</published>
     <updated>2021-04-26T11:15:10.712Z</updated>
     
@@ -85,8 +85,8 @@
   
   <entry>
     <title>STL</title>
-    <link href="https://lwscode.cn/p/9423/"/>
-    <id>https://lwscode.cn/p/9423/</id>
+    <link href="https://lwscode.com/p/9423/"/>
+    <id>https://lwscode.com/p/9423/</id>
     <published>2021-04-20T03:07:52.000Z</published>
     <updated>2021-04-26T11:15:10.709Z</updated>
     
@@ -109,8 +109,8 @@
   
   <entry>
     <title>Socket</title>
-    <link href="https://lwscode.cn/p/34204/"/>
-    <id>https://lwscode.cn/p/34204/</id>
+    <link href="https://lwscode.com/p/34204/"/>
+    <id>https://lwscode.com/p/34204/</id>
     <published>2021-04-20T03:05:34.000Z</published>
     <updated>2021-04-26T11:15:10.712Z</updated>
     
@@ -129,8 +129,8 @@
   
   <entry>
     <title>RBTree</title>
-    <link href="https://lwscode.cn/p/60718/"/>
-    <id>https://lwscode.cn/p/60718/</id>
+    <link href="https://lwscode.com/p/60718/"/>
+    <id>https://lwscode.com/p/60718/</id>
     <published>2021-04-20T03:04:42.000Z</published>
     <updated>2021-04-26T11:15:10.709Z</updated>
     
@@ -155,8 +155,8 @@
   
   <entry>
     <title>Printf</title>
-    <link href="https://lwscode.cn/p/12527/"/>
-    <id>https://lwscode.cn/p/12527/</id>
+    <link href="https://lwscode.com/p/12527/"/>
+    <id>https://lwscode.com/p/12527/</id>
     <published>2021-04-20T03:03:19.000Z</published>
     <updated>2021-04-26T11:15:10.712Z</updated>
     
@@ -179,8 +179,8 @@
   
   <entry>
     <title>Note4</title>
-    <link href="https://lwscode.cn/p/34591/"/>
-    <id>https://lwscode.cn/p/34591/</id>
+    <link href="https://lwscode.com/p/34591/"/>
+    <id>https://lwscode.com/p/34591/</id>
     <published>2021-04-20T03:01:49.000Z</published>
     <updated>2021-04-26T11:15:10.712Z</updated>
     
@@ -205,8 +205,8 @@
   
   <entry>
     <title>Note3</title>
-    <link href="https://lwscode.cn/p/17758/"/>
-    <id>https://lwscode.cn/p/17758/</id>
+    <link href="https://lwscode.com/p/17758/"/>
+    <id>https://lwscode.com/p/17758/</id>
     <published>2021-04-20T03:01:06.000Z</published>
     <updated>2021-04-26T11:15:10.711Z</updated>
     
@@ -228,8 +228,8 @@
   
   <entry>
     <title>Note2</title>
-    <link href="https://lwscode.cn/p/34207/"/>
-    <id>https://lwscode.cn/p/34207/</id>
+    <link href="https://lwscode.com/p/34207/"/>
+    <id>https://lwscode.com/p/34207/</id>
     <published>2021-04-20T03:00:15.000Z</published>
     <updated>2021-04-26T11:15:10.711Z</updated>
     
@@ -257,8 +257,8 @@
   
   <entry>
     <title>Note1</title>
-    <link href="https://lwscode.cn/p/34015/"/>
-    <id>https://lwscode.cn/p/34015/</id>
+    <link href="https://lwscode.com/p/34015/"/>
+    <id>https://lwscode.com/p/34015/</id>
     <published>2021-04-20T02:59:05.000Z</published>
     <updated>2021-04-26T11:15:10.711Z</updated>
     
@@ -280,8 +280,8 @@
   
   <entry>
     <title>Newcoder_cpp</title>
-    <link href="https://lwscode.cn/p/22684/"/>
-    <id>https://lwscode.cn/p/22684/</id>
+    <link href="https://lwscode.com/p/22684/"/>
+    <id>https://lwscode.com/p/22684/</id>
     <published>2021-04-20T02:58:13.000Z</published>
     <updated>2021-04-26T11:15:10.711Z</updated>
     
@@ -306,8 +306,8 @@
   
   <entry>
     <title>Manjaro Kde安装后的配置</title>
-    <link href="https://lwscode.cn/p/9628/"/>
-    <id>https://lwscode.cn/p/9628/</id>
+    <link href="https://lwscode.com/p/9628/"/>
+    <id>https://lwscode.com/p/9628/</id>
     <published>2021-04-20T02:55:45.000Z</published>
     <updated>2021-04-26T11:15:10.711Z</updated>
     
@@ -328,8 +328,8 @@
   
   <entry>
     <title>Git代理</title>
-    <link href="https://lwscode.cn/p/39017/"/>
-    <id>https://lwscode.cn/p/39017/</id>
+    <link href="https://lwscode.com/p/39017/"/>
+    <id>https://lwscode.com/p/39017/</id>
     <published>2021-04-20T02:54:04.000Z</published>
     <updated>2021-04-26T11:15:10.710Z</updated>
     
@@ -350,8 +350,8 @@
   
   <entry>
     <title>Effective</title>
-    <link href="https://lwscode.cn/p/52590/"/>
-    <id>https://lwscode.cn/p/52590/</id>
+    <link href="https://lwscode.com/p/52590/"/>
+    <id>https://lwscode.com/p/52590/</id>
     <published>2021-04-20T02:50:31.000Z</published>
     <updated>2021-04-26T11:15:10.710Z</updated>
     
@@ -374,8 +374,8 @@
   
   <entry>
     <title>Cpp_stl</title>
-    <link href="https://lwscode.cn/p/56828/"/>
-    <id>https://lwscode.cn/p/56828/</id>
+    <link href="https://lwscode.com/p/56828/"/>
+    <id>https://lwscode.com/p/56828/</id>
     <published>2021-04-20T02:48:16.000Z</published>
     <updated>2021-04-26T11:15:10.710Z</updated>
     
@@ -400,8 +400,8 @@
   
   <entry>
     <title>Computer_networking</title>
-    <link href="https://lwscode.cn/p/40772/"/>
-    <id>https://lwscode.cn/p/40772/</id>
+    <link href="https://lwscode.com/p/40772/"/>
+    <id>https://lwscode.com/p/40772/</id>
     <published>2021-04-20T02:46:58.000Z</published>
     <updated>2021-04-26T11:15:10.709Z</updated>
     
@@ -425,8 +425,8 @@
   
   <entry>
     <title>C/cpp</title>
-    <link href="https://lwscode.cn/p/8601/"/>
-    <id>https://lwscode.cn/p/8601/</id>
+    <link href="https://lwscode.com/p/8601/"/>
+    <id>https://lwscode.com/p/8601/</id>
     <published>2021-04-20T02:45:39.000Z</published>
     <updated>2021-04-26T11:15:10.709Z</updated>
     
@@ -448,8 +448,8 @@
   
   <entry>
     <title>后端开发面试题</title>
-    <link href="https://lwscode.cn/p/23809/"/>
-    <id>https://lwscode.cn/p/23809/</id>
+    <link href="https://lwscode.com/p/23809/"/>
+    <id>https://lwscode.com/p/23809/</id>
     <published>2021-04-20T02:43:03.000Z</published>
     <updated>2021-04-26T11:15:10.713Z</updated>
     
@@ -473,8 +473,8 @@
   
   <entry>
     <title>Avl_tree</title>
-    <link href="https://lwscode.cn/p/51743/"/>
-    <id>https://lwscode.cn/p/51743/</id>
+    <link href="https://lwscode.com/p/51743/"/>
+    <id>https://lwscode.com/p/51743/</id>
     <published>2021-04-20T02:42:00.000Z</published>
     <updated>2021-04-26T11:15:10.709Z</updated>
     
