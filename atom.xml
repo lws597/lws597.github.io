@@ -6,7 +6,7 @@
   <link href="https://lwscode.com/atom.xml" rel="self"/>
   
   <link href="https://lwscode.com/"/>
-  <updated>2021-04-26T11:20:15.854Z</updated>
+  <updated>2021-07-02T17:39:04.983Z</updated>
   <id>https://lwscode.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://lwscode.com/p/0/"/>
+    <id>https://lwscode.com/p/0/</id>
+    <published>2021-07-02T17:39:04.982Z</published>
+    <updated>2021-07-02T17:39:04.983Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="macos自用配置">macos自用配置</h3><p>浏览器——google chrome</p><p>翻墙——v2rayU</p><p>终端——iterm2</p><p>笔记——typora</p><p>git tool——sourcetree</p><h4 id="开发环境">开发环境</h4><p>最先安装完成Xcode，然后</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">xcode-select --install<br></code></pre></td></tr></table></figure><p>配置常用开发环境（其中python3 version 3.8，需brew install python@3.9）</p><h4 id="安装homebrewcn">安装homebrewcn</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">/bin/zsh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure><h4 id="安装常用工具">安装常用工具</h4><p>python、node、yarn、ccls、fzf、ranger、typora、sourcetree、qt-creator、autojump、thefuck、visual-studio-code、neovim、microsoft-remote-desktop，只需要分别</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew install <span class="hljs-comment">#+ 以上包名</span><br></code></pre></td></tr></table></figure><p>安装过程中部分包会提示在.zshrc中添加配置，自行添加</p><h4 id="修改pip源">修改pip源</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">mkdir ~/.pip<br>vim ~/.pip/pip.conf<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">[global]<br>index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple<br>[install]<br>trusted-host &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn<br></code></pre></td></tr></table></figure><h4 id="升级pip">升级pip</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">pip3 install --upgrade pip<br></code></pre></td></tr></table></figure><h4 id="安装pygments、pynvim">安装pygments、pynvim</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">pip install -g pygments<br>pip install -g pynvim<br></code></pre></td></tr></table></figure><h4 id="修改npm、yarn源">修改npm、yarn源</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">npm config <span class="hljs-built_in">set</span> registry https://registry.npm.taobao.org<br>yarn config <span class="hljs-built_in">set</span> registry https://registry.npm.taobao.org<br></code></pre></td></tr></table></figure><h4 id="iterm2配置">iterm2配置</h4><h5 id="先安装ohmyzsh">先安装ohmyzsh</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure><h5 id="下载ohmyzsh-plugin">下载ohmyzsh plugin</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="hljs-variable">$ZSH_CUSTOM</span>/plugins/zsh-syntax-highlighting<br>git <span class="hljs-built_in">clone</span> git://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions<br>git <span class="hljs-built_in">clone</span> https://github.com/paulirish/git-open.git <span class="hljs-variable">$ZSH_CUSTOM</span>/plugins/git-open<br></code></pre></td></tr></table></figure><h5 id="zshrc修改">.zshrc修改</h5><p>自用插件，<code>plugin=(git)</code>括号里面添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">plugins&#x3D;(git zsh-autosuggestions zsh-syntax-highlighting autojump web-search extract last-working-dir sudo pip thefuck colored-man-pages colorize safe-paste git-open vi-mode copyfile copydir gitfast command-not-found history)<br></code></pre></td></tr></table></figure><h5 id="alias添加">alias添加</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain">alias vim&#x3D;&quot;nvim&quot;<br>alias vi&#x3D;&quot;nvim&quot;<br>alias rm&#x3D;&quot;rm -i&quot;<br>alias cp&#x3D;&quot;cp -i&quot;<br>alias cls&#x3D;&quot;clear&quot;<br>alias cat&#x3D;&quot;ccat&quot;<br>alias ra&#x3D;&quot;ranger&quot;<br>alias -s c&#x3D;copyfile<br>alias -s cpp&#x3D;copyfile<br></code></pre></td></tr></table></figure><p>终端里<code>zsh</code>即可加载配置</p><h4 id="安装字体">安装字体</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew tap homebrew/cask-fonts<br>brew install --cask font-sauce-code-pro-nerd-font<br></code></pre></td></tr></table></figure><p>补充一些缺失的符号</p><h4 id="nvim-spacevim配置">nvim+spacevim配置</h4><h5 id="安装spacevim">安装spacevim</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">curl -sLf https://spacevim.org/cn/install.sh | bash<br></code></pre></td></tr></table></figure><h5 id="自用配置">自用配置</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> https://github.com/lws597/SpaceVim.git .SpaceVim.d<br></code></pre></td></tr></table></figure><p>终端里nvim即可下载插件</p><h4 id="配色主题">配色主题</h4><p>Xcode、vscode、iterm2、zsh自用配色主题为<code>dracula</code></p><p><a href="https://draculatheme.com/">https://draculatheme.com/</a></p><p><a href="https://github.com/dracula/dracula-theme">https://github.com/dracula/dracula-theme</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;macos自用配置&quot;&gt;macos自用配置&lt;/h3&gt;
+&lt;p&gt;浏览器——google chrome&lt;/p&gt;
+&lt;p&gt;翻墙——v2rayU&lt;/p&gt;
+&lt;p&gt;终端——iterm2&lt;/p&gt;
+&lt;p&gt;笔记——typora&lt;/p&gt;
+&lt;p&gt;git tool——sourcetree&lt;/p</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Javascript学习note</title>
@@ -43,9 +68,9 @@
     <link href="https://lwscode.com/p/3770/"/>
     <id>https://lwscode.com/p/3770/</id>
     <published>2021-04-22T07:55:36.000Z</published>
-    <updated>2021-04-26T11:15:10.712Z</updated>
+    <updated>2021-06-20T13:48:30.544Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="wps实习四个月后的一些思考和新规划">wps实习四个月后的一些思考和新规划</h2><p>wps的实习已经告一段落，玩了一段时间，迷茫了一段时间，整理代码一段时间，现在写一篇思考。</p><h3 id="wps实习内容">wps实习内容</h3><p>在wps mac组实习四个月，接手的需求有：</p><ol><li><p>移植pc功能</p><ol><li>Excel批量计算</li></ol></li><li><p>交互功能</p><ol><li>空格键进入图片预览</li><li>双指滑动（滚轮）移动图片</li><li>双指拍&amp;双指捏缩放图片</li><li>双指旋旋转wps对象</li><li>双指/右键拖复制wps对象</li></ol></li><li><p>优化需求</p><ol><li>多级窗口modal规范</li><li>新建文本框默认设置添加选项</li><li>复制图片清晰度优化</li><li>Excel单个单元格复制形式改为纯文本</li></ol></li><li><p>半成品需求</p><ol><li>光标icon替换为高清图</li><li>Excel底部sheet平滑移动</li><li>文本框添加只复制文本功能</li><li>三指捏需求</li></ol></li></ol><p>感觉这些需求都挺无聊的，所以才交给一个实习生写吧。多级窗口modal规范，该需求阅读了大量qt源码。触控板扩展需求考察了一堆开源代码，学习了objective-c和swift。也就这两个需求有点意思。</p><h3 id="实习过程技术成长">实习过程技术成长</h3><p>刚入职先学习公司代码规范、工程规范，和一些工作流程。第一次用到心心念念的mac，也花了点时间来熟悉，用过很多发行版Linux，上手mac也很快。wps产品由用qt+c/cpp完成，技术方面先学习qt。第一个需求移植pc已有的Excel批量计算功能，需要添加的代码都在一起，不需要调试，直接上手敲码就好，qt方面也只需要学习dialog的创建，和事件的处理。第二个需求空格键进入图片预览，该有的api都有，但需要找到适合修改的代码块，因为不会调试所以花了一个多星期，还是最后组长教会了我调试来定位代码和了解功能的执行流程。后面都是一些调api的需求，以及学会qt某部分的使用就能写的需求。多级窗口modal规范需求，考察了很久才定位到qt的bug（pc没问题，mac有问题，应该第一时间就测试一下是不是qt的bug），为解决bug阅读了大量qt源码，对qt的一些特性有了更深了了解，学习框架还是得直接读源码。qt源码面向对象，以c++11为标准（qt6以c++17为标准），范型编程到处都是，可读性很好，比wps代码好的多。离职前的需求是mac触控板相关的，网上资料很少，只有github上有几个项目，为了看懂代码就去学了objective-c，顺便学了swift（语法方面c/cpp yyds，oc真反人类，swift也习惯不了）。做了一些考察才知道apple有Private API这个东西，mac触控板增强软件都用了这部分api，wps不可能用的，产品的一些需求也就得打回了。不用写多指需求了，但多指滑、多指捏在继续考察，应该可以通过触控点的坐标识别手势，但自定义手势多了可能就不能做到精准识别了。</p><h3 id="实习过程不足">实习过程不足</h3><p>实习过程还是有一些问题暴露出来。最大的问题应该就是不喜欢码字，提测邮件都不想写，周报和提测邮件被cue过，组长让我写开发文档也一次没写过。感觉码字的问题需要正视一下，不仅是工作流程中的常规码字，还有一些技术分享内容，这也是对个人和工作都有帮助的。所以打算以后以该blog为契机多写一些技术分享内容。由于实习疏忽了算法题，现在很多题的解法都生疏了。现在回头看刷算法题确实可以提升思维，也是为了以后面试做准备，应该让刷算法题成为一个习惯。之前刷了一堆不同难度的算法题，几乎覆盖了所有类型的算法，但没有做过一次归纳总结，也没写过一篇算法文章。今后每天刷一定量题，也要做归纳总结写稿。大学技术积累只有c/cpp，其他技术都不会，不会一个框架，没有达到技术上的广度。今后需要多积累一些其他技术，学习一下go、web前端、机器学习，和一些较火的框架。新技术的积累是从头开始，学习过程也要通过blog形式记录一下。虽说大学只学了c/cpp，但深度也是没达到的，引以为傲的语言方面和大佬交流后发现，还是有一堆东西不知道的。c/cpp的一些附属技术也只是了解。短期内没有转技术的想法，所以技术方面还是以c/cpp方面为主。wps实习是一次接触大型的工程代码，为了更好的写工程代码，还需要学习重构相关的技巧，架构知识入门，熟练掌握范型编程，设计模式熟练选择和运用。</p><h3 id="对未来的焦虑">对未来的焦虑</h3><p>老实说工作和我想象中的并不一样，你不是只需要一心一意的写好你的代码就好。还需要和其他人对接，完成自己的okr，完成小组的okr。牺牲个人，顺应小组的方向。个人对公司来说就是一颗螺丝钉，在我所做的工作压根看不到自己的痕迹，做的技术也是没意思的CURD，写一些shit需求的业务代码，和一些前辈聊了之后发现大厂也有这般问题。之前重来没想过这个问题，就算想到了也不会觉得这是个问题。实习离职后也思考一番人生，还冒出自己创业的可笑想法。b站UP主推荐《软技能》一书，在书中找到了一些问题的答案。工作了就要尽量别让工作侵占生活，下班后可以自己做饭、去健身，养一只猫，做一些技术之外的事。而打工这件事应该要以平常心对待，工作是公司的，个人发展是自己的。技术方面下班后刷几个算法题，看几篇技术文章，也要做到技术产出。</p><p>好好学习吧。技术和money都会有的！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="wps实习四个月后的一些思考和新规划">wps实习四个月后的一些思考和新规划</h2><p>wps的实习已经告一段落，玩了一段时间，迷茫了一段时间，整理代码一段时间，现在写一篇思考。</p><h3 id="wps实习内容">wps实习内容</h3><p>在wps mac组实习四个月，接手的需求有：</p><ol><li><p>移植pc功能</p><ol><li>Excel批量计算</li></ol></li><li><p>交互功能</p><ol><li>空格键进入图片预览</li><li>双指滑动（滚轮）移动图片</li><li>双指拍&amp;双指捏缩放图片</li><li>双指旋旋转wps对象</li><li>双指/右键拖复制wps对象</li></ol></li><li><p>优化需求</p><ol><li>多级窗口modal规范</li><li>新建文本框默认设置添加选项</li><li>复制图片清晰度优化</li><li>Excel单个单元格复制形式改为纯文本</li></ol></li><li><p>半成品需求</p><ol><li>光标icon替换为高清图</li><li>Excel底部sheet平滑移动</li><li>文本框添加只复制文本功能</li><li>三指捏需求</li></ol></li></ol><p>感觉这些需求都挺无聊的，所以才交给一个实习生写吧。多级窗口modal规范，该需求阅读了大量qt源码。触控板扩展需求考察了一堆开源代码，学习了objective-c和swift。也就这两个需求有点意思。</p><h3 id="实习过程技术成长">实习过程技术成长</h3><p>刚入职先学习公司代码规范、工程规范，和一些工作流程。第一次用到心心念念的mac，也花了点时间来熟悉，用过很多发行版Linux，上手mac也很快。wps产品由用qt+c/cpp完成，技术方面先学习qt。第一个需求移植pc已有的Excel批量计算功能，需要添加的代码都在一起，不需要调试，直接上手敲码就好，qt方面也只需要学习dialog的创建，和事件的处理。第二个需求空格键进入图片预览，该有的api都有，但需要找到适合修改的代码块，因为不会调试所以花了一个多星期，还是最后组长教会了我调试来定位代码和了解功能的执行流程。后面都是一些调api的需求，以及学会qt某部分的使用就能写的需求。多级窗口modal规范需求，考察了很久才定位到qt的bug（pc没问题，mac有问题，应该第一时间就测试一下是不是qt的bug），为解决bug阅读了大量qt源码，对qt的一些特性有了更深了了解，学习框架还是得直接读源码。qt源码面向对象，以c++11为标准（qt6以c++17为标准），范型编程到处都是，可读性很好，比wps代码好的多。离职前的需求是mac触控板相关的，网上资料很少，只有github上有几个项目，为了看懂代码就去学了objective-c，顺便学了swift（语法方面c/cpp yyds，oc真反人类，swift也习惯不了）。做了一些考察才知道apple有Private API这个东西，mac触控板增强软件都用了这部分api，wps不可能用的，产品的一些需求也就得打回了。不用写多指需求了，但多指滑、多指捏在继续考察，应该可以通过触控点的坐标识别手势，但自定义手势多了可能就不能做到精准识别了。</p><h3 id="实习过程不足">实习过程不足</h3><p>实习过程还是有一些问题暴露出来。最大的问题应该就是不喜欢码字，提测邮件都不想写，周报和提测邮件被cue过，组长让我写开发文档也一次没写过。感觉码字的问题需要正视一下，不仅是工作流程中的常规码字，还有一些技术分享内容，这也是对个人和工作都有帮助的。所以打算以后以该blog为契机多写一些技术分享内容。由于实习疏忽了算法题，现在很多题的解法都生疏了。现在回头看刷算法题确实可以提升思维，也是为了以后面试做准备，应该让刷算法题成为一个习惯。之前刷了一堆不同难度的算法题，几乎覆盖了所有类型的算法，但没有做过一次归纳总结，也没写过一篇算法文章。今后每天刷一定量题，也要做归纳总结写稿。大学技术积累只有c/cpp，其他技术都不会，不会一个框架，没有达到技术上的广度。今后需要多积累一些其他技术，学习一下go、web前端、机器学习，和一些较火的框架。新技术的积累是从头开始，学习过程也要通过blog形式记录一下。虽说大学只学了c/cpp，但深度也是没达到的，引以为傲的语言方面和大佬交流后发现，还是有一堆东西不知道的。c/cpp的一些附属技术也只是了解。短期内没有转技术的想法，所以技术方面还是以c/cpp方面为主。wps实习是一次接触大型的工程代码，为了更好的写工程代码，还需要学习重构相关的技巧，架构知识入门，熟练掌握范型编程，设计模式熟练选择和运用。</p><h3 id="对未来的焦虑">对未来的焦虑</h3><p>老实说工作和我想象中的并不一样，你不是只需要一心一意的写好你的代码就好。还需要和其他人对接，完成自己的okr，完成小组的okr。牺牲个人，顺应小组的方向。个人对公司来说就是一颗螺丝钉，在我所做的工作压根看不到自己的痕迹，做的技术也是没意思的CURD，写一些shit需求的业务代码，和一些前辈聊了之后发现大厂也有这般问题。之前从来没想过这个问题，就算想到了也不会觉得这是个问题。实习离职后也思考一番人生，还冒出自己创业的可笑想法。b站UP主推荐《软技能》一书，在书中找到了一些问题的答案。工作了就要尽量别让工作侵占生活，下班后可以自己做饭、去健身，养一只猫，做一些技术之外的事。而打工这件事应该要以平常心对待，工作是公司的，个人发展是自己的。技术方面下班后刷几个算法题，看几篇技术文章，也要做到技术产出。</p><p>好好学习吧。技术和money都会有的！</p>]]></content>
     
     
       
@@ -464,30 +489,6 @@
 &lt;h3 id=&quot;关键字作用解释：&quot;&gt;关键字作用解释：&lt;/h3&gt;
 &lt;p&gt;volatile作用&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Volatil</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Avl_tree</title>
-    <link href="https://lwscode.com/p/51743/"/>
-    <id>https://lwscode.com/p/51743/</id>
-    <published>2021-04-20T02:42:00.000Z</published>
-    <updated>2021-04-26T11:15:10.709Z</updated>
-    
-    <content type="html"><![CDATA[<h1>avl_tree</h1><h2 id="节点数">节点数</h2><p>在高度为h的avl树中，最少节点数low(h)</p><p>low(h) = low(h - 1) + low(h - 2) + 1low(0) = 1 low(1) = 2</p><p>最大节点数max(h)</p><p>max(h) = 2^h - 1</p><h2 id="平衡">平衡</h2><p>LL型 右旋</p><p>RR型 左旋</p><p>LR型 左旋–&gt;(LL型)–&gt;右旋</p><p>RL型 右旋–&gt;(RR型)–&gt;左旋</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;avl_tree&lt;/h1&gt;
-&lt;h2 id=&quot;节点数&quot;&gt;节点数&lt;/h2&gt;
-&lt;p&gt;在高度为h的avl树中，最少节点数low(h)&lt;/p&gt;
-&lt;p&gt;low(h) = low(h - 1) + low(h - 2) + 1	low(0) = 1 low(1) = 2&lt;/p&gt;
-&lt;p&gt;</summary>
       
     
     
